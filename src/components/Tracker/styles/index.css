@@ -1,0 +1,66 @@
+@import url("./history.css");
+@import url("./form.css");
+@import url("./incomeExpense.css");
+
+:root {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --prime-color: #1c1c1c;
+  --border-color: #949494;
+  --form-color: #c5dde3;
+  --light-color: #bbb;
+  --light-color2: #ddd;
+  --red-color: #ff8f8f;
+  --green-color: #508d69;
+  --light-green-color: #9ade7b;
+  --tracker-small-space: 0.25em;
+  --tracker-big-space: 1em;
+  --tracker-br: 0.5em;
+  --tracker-br-small: 0.25em;
+}
+
+.tracker * {
+  margin: 0;
+  padding: 0;
+  border: none;
+  /* border: 2px red solid; */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.tracker input,
+.tracker select,
+.tracker button {
+  font-size: inherit;
+}
+.tracker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tracker-big-space);
+  background: #f7f7f7;
+  border-radius: var(--tracker-br);
+  height: 600px;
+}
+
+.tracker-container {
+  width: 400px;
+  height: 100%;
+  padding: var(--tracker-big-space);
+  overflow: hidden;
+}
+
+.tracker-h-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tracker-flex {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tracker-big-space);
+}
+.tracker-h-flex {
+  display: flex;
+  flex-direction: row;
+  gap: var(--tracker-big-space);
+}

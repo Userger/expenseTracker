@@ -1,0 +1,103 @@
+.tracker .tracker-history-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: var(--tracker-small-space);
+}
+.tracker .tracker-history-container h3 {
+}
+.tracker .tracker-li-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--tracker-small-space);
+  width: 100%;
+}
+.tracker .tracker-historyList {
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tracker-small-space);
+}
+
+.tracker .tracker-li {
+  display: flex;
+  gap: 0.125em;
+  justify-content: space-between;
+  align-items: start;
+}
+.tracker .tracker-descr {
+  max-height: 2em;
+  flex-grow: 1;
+  flex-shrink: 100;
+  word-break: break-all;
+  padding-inline: var(--tracker-big-space);
+  border-radius: var(--tracker-big-space);
+  background: var(--light-color2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation-name: anim2;
+  animation-delay: 0s;
+  animation-duration: 1000ms;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+.tracker .tracker-li-clicked .tracker-descr {
+  animation-name: anim;
+  animation-delay: 0s;
+  animation-duration: 1000ms;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+@keyframes anim {
+  0% {
+    max-height: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  1% {
+    white-space: wrap;
+    overflow: auto;
+  }
+  100% {
+    max-height: 10em;
+    white-space: wrap;
+    overflow: auto;
+  }
+}
+@keyframes anim2 {
+  0% {
+    max-height: 10em;
+    white-space: wrap;
+    overflow: auto;
+  }
+  99% {
+    max-height: 2em;
+    white-space: wrap;
+    overflow: auto;
+  }
+  100% {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+.tracker .tracker-num {
+  padding-inline-start: var(--tracker-small-space);
+}
+.tracker .tracker-exp {
+  color: var(--red-color);
+}
+.tracker .tracker-inc {
+  color: var(--green-color);
+}
+.tracker .tracker-delete {
+  overflow: hidden;
+  transition: 200ms linear;
+  padding: var(--tracker-small-space);
+  flex-shrink: 0;
+}
