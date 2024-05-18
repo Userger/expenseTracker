@@ -8,12 +8,18 @@ import { HistoryItem } from "./HistoryItem";
 import { IncomeExpense } from "./IncomeExpense";
 import { TrackerAppLayout } from "./TrackerAppLayout";
 import "./styles/index.css";
+import { HistoryDateContainer } from "./HistoryDateContainer";
+import { getAnotherView } from "../../model/historyAnotherView";
+import { useMemo } from "react";
 
 export function TrackerApp() {
   const { addTransaction, deleteTransaction, click, state } = useExpense();
 
   const { opened, openClose } = useHeightFormHistory();
   const { history, balance, incomeSum, expenseSum } = state;
+  const anotherViewHistory = useMemo(() => {
+    return getAnotherView(history);
+  }, [history]);
   return (
     <TrackerAppLayout
       header={<Header />}
@@ -23,10 +29,21 @@ export function TrackerApp() {
       }
       history={
         <History
-          history={history}
-          deleteTransaction={deleteTransaction}
-          click={click}
-          Item={HistoryItem}
+          history={
+            history.length ? (
+              anotherViewHistory.map((dateHistory) => (
+                <HistoryDateContainer
+                  deleteTransaction={deleteTransaction}
+                  click={click}
+                  Item={HistoryItem}
+                  key={dateHistory[0].date.dateView}
+                  dateHistory={dateHistory}
+                />
+              ))
+            ) : (
+              <div>empty list...</div>
+            )
+          }
         />
       }
       formTransaction={

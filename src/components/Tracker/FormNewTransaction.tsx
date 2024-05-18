@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTransTypeCategory } from "../../hooks/useTransTypeCategory";
 
 export function FormNewTransaction({
   addTransaction,
@@ -10,16 +11,20 @@ export function FormNewTransaction({
     descr: string;
     num: number;
     category: string;
+    date: string;
   }) => void;
   opened: boolean;
   openClose: () => void;
 }) {
   const [descr, setDescr] = useState("");
   const [sum, setSum] = useState("");
-  const [transType, setTransType] = useState<"expense" | "income">("expense");
-  const [category, setCategory] = useState<string>(
-    transType === "expense" ? "food" : "salary",
-  );
+
+  const {
+    categoryType: { transType, category },
+    setCategory,
+    setTransType,
+  } = useTransTypeCategory();
+  const [date, setDate] = useState<string>("2024-05-18");
 
   function canSubmit() {
     if (descr.trim() && sum && transType) {
@@ -34,6 +39,7 @@ export function FormNewTransaction({
         num: Number(sum),
         type: transType,
         category: category,
+        date: date,
       });
       setDescr("");
       setSum("");
@@ -102,6 +108,11 @@ export function FormNewTransaction({
             }}
           />
         </div>
+        <input
+          defaultValue={date}
+          type="date"
+          onChange={(e) => setDate(e.target.value)}
+        />
         <button
           className="tracker-form-submitButton"
           type="submit"

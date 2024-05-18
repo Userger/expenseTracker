@@ -31,10 +31,15 @@ function getExpenseSum(history: TransactionType[]) {
 
   return { incSum, expSum };
 }
-function getDateView(date: Date) {
+export function getDateView2(date: Date) {
   const dateI = `${date.getFullYear()}-${date.getMonth() > 8 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`}-${date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`}`;
   const dateView = `${date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`}.${date.getMonth() > 8 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`}.${date.getFullYear()}`;
   return { dateI, dateView };
+}
+function getDateView(date: string) {
+  // 2024-05-18
+   return `${date.slice(8, 10)}.${date.slice(5,7)}.${date.slice(0,4)}`
+  // 08.05.2024
 }
 function reducer(
   state: TransactionsState,
@@ -46,6 +51,7 @@ function reducer(
           descr: string;
           num: number;
           category: string;
+          date: string
         };
       }
     | { type: "delete" | "click"; payload: { id: number } },
@@ -57,7 +63,10 @@ function reducer(
         id: date.getSeconds(),
         type: action.payload.type,
         category: action.payload.category,
-        date: getDateView(date),
+        date: {
+          dateI: action.payload.date,
+          dateView: getDateView(action.payload.date)
+        },
         descr: action.payload.descr,
         num: action.payload.num,
         clicked: false,
@@ -116,6 +125,7 @@ export function useExpense() {
     descr: string;
     num: number;
     category: string;
+    date: string
   }) {
     dispatch({ type: "add", payload: payload });
     console.log("addded");

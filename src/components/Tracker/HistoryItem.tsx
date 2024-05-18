@@ -31,7 +31,6 @@ export const HistoryItem = memo(function HistoryItem({
             <div className={`tracker-num tracker-exp`}>-{formattedNum}$</div>
           )}
           <div>{transaction.category}</div>
-          <div className="tracker-li-date">{transaction.date.dateView}</div>
         </div>
         <button
           className="tracker-delete"
