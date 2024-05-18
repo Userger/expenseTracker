@@ -57,6 +57,7 @@
 }
 .tracker .tracker-form-select {
   padding: var(--tracker-small-space);
+  min-width: 5em;
   border: none;
   border-radius: var(--tracker-br-small);
   background: var(--light-color2);

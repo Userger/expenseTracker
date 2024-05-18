@@ -9,6 +9,7 @@ export function FormNewTransaction({
     type: "expense" | "income";
     descr: string;
     num: number;
+    category: string;
   }) => void;
   opened: boolean;
   openClose: () => void;
@@ -16,6 +17,9 @@ export function FormNewTransaction({
   const [descr, setDescr] = useState("");
   const [sum, setSum] = useState("");
   const [transType, setTransType] = useState<"expense" | "income">("expense");
+  const [category, setCategory] = useState<string>(
+    transType === "expense" ? "food" : "salary",
+  );
 
   function canSubmit() {
     if (descr.trim() && sum && transType) {
@@ -29,6 +33,7 @@ export function FormNewTransaction({
         descr: descr,
         num: Number(sum),
         type: transType,
+        category: category,
       });
       setDescr("");
       setSum("");
@@ -65,17 +70,38 @@ export function FormNewTransaction({
             }}
           />
         </div>
-        <input
-          autoComplete="off"
-          id="tracker-descr"
-          className={`tracker-form-input ${descr.trim() ? "tracker-form-input-hasText" : ""}`}
-          type="text"
-          value={descr}
-          placeholder="Enter description..."
-          onChange={(e) => {
-            setDescr(e.target.value);
-          }}
-        />
+        <div className="tracker-h-flex">
+          <select
+            className={`tracker-form-select ${descr.trim() ? "tracker-form-input-hasText" : ""}`}
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+            defaultValue={category}
+          >
+            {transType === "expense" ? (
+              <>
+                <option value="food">food</option>
+                <option value="cloth">cloth</option>
+              </>
+            ) : (
+              <>
+                <option value="salary">salary</option>
+                <option value="transfer">transfer</option>
+              </>
+            )}
+          </select>
+          <input
+            autoComplete="off"
+            id="tracker-descr"
+            className={`tracker-form-input ${descr.trim() ? "tracker-form-input-hasText" : ""}`}
+            type="text"
+            value={descr}
+            placeholder="Enter description..."
+            onChange={(e) => {
+              setDescr(e.target.value);
+            }}
+          />
+        </div>
         <button
           className="tracker-form-submitButton"
           type="submit"
