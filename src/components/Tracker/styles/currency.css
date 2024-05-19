@@ -1,0 +1,25 @@
+.tracker .tracker-currency {
+  --currency-width: 0.63em;
+  font-family: monospace;
+  display: inline-block;
+  width: var(--currency-width);
+  overflow: hidden;
+  font-size: inherit;
+  line-height: 1.23;
+  vertical-align: top;
+}
+.tracker .tracker-currencies-container {
+  display: flex;
+  justify-content: start;
+  transition: transform 300ms linear;
+}
+.tracker .tracker-currencies-container .tracker-currency-container {
+  text-align: center;
+  flex-shrink: 0;
+  width: var(--currency-width);
+}
+.tracker .tracker-currency-choose {
+  display: flex;
+  gap: var(--tracker-small-space);
+  align-items: center;
+}

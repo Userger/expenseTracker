@@ -2,7 +2,7 @@ import { useExpense } from "../../hooks/useExpense";
 import { Balance } from "./Balance";
 import { FormNewTransaction } from "./FormNewTransaction";
 import { Header } from "./Header";
-import { History } from "./HistoryList2";
+import { History } from "./HistoryList";
 import { HistoryItem } from "./HistoryItem";
 import { IncomeExpense } from "./IncomeExpense";
 import { TrackerAppLayout } from "./TrackerAppLayout";
@@ -11,6 +11,8 @@ import { HistoryDateContainer } from "./HistoryDateContainer";
 import { getAnotherView } from "../../model/historyAnotherView";
 import { useMemo } from "react";
 import { sortByDate } from "../../model/sortByDate";
+import { CurrencyChoose } from "./CurrensyChoose";
+import { Settings } from "./Settings";
 
 export function TrackerApp() {
   const { addTransaction, deleteTransaction, click, state } = useExpense();
@@ -22,8 +24,10 @@ export function TrackerApp() {
   const anotherViewHistory = useMemo(() => {
     return getAnotherView(sortedHistory);
   }, [sortedHistory]);
+
   return (
     <TrackerAppLayout
+      settings={<Settings currencyChoose=<CurrencyChoose /> />}
       header={<Header />}
       balance={<Balance balance={balance} />}
       IncomeExpense={

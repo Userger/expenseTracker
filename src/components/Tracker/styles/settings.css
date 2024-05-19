@@ -1,0 +1,48 @@
+.tracker .tracker-settings {
+  position: absolute;
+  right: 0;
+  background: white;
+  z-index: 100000;
+  border: 1px solid var(--light-color2);
+  padding-inline: var(--tracker-big-space);
+  padding-block: var(--tracker-small-space);
+  border-bottom-left-radius: var(--tracker-br);
+  color: var(--light-color);
+}
+.tracker .tracker-settings.tracker-settings-opened {
+  border-radius: var(--tracker-br);
+}
+
+.tracker .tracker-settings-bar {
+  display: flex;
+  align-items: center;
+}
+.tracker .tracker-settings-sign {
+  font-size: 2em;
+}
+.tracker .tracker-settings-title {
+  font-size: 1.3em;
+  max-width: 0;
+  overflow: hidden;
+  transition: 300ms linear;
+  padding-inline: 0;
+}
+.tracker .tracker-settings-opened .tracker-settings-title {
+  max-width: 5em;
+  padding-inline: var(--tracker-small-space);
+}
+.tracker-settings-field {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  transition:
+    height 300ms linear,
+    width 300ms linear;
+}
+.tracker-settings-field-opened {
+  height: 6em;
+  width: 5em;
+  transition:
+    height 300ms 300ms linear,
+    width 300ms 300ms linear;
+}

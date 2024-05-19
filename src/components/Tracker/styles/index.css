@@ -1,6 +1,8 @@
 @import url("./history.css");
 @import url("./form.css");
 @import url("./incomeExpense.css");
+@import url("./currency.css");
+@import url("./settings.css");
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -63,4 +65,8 @@
   display: flex;
   flex-direction: row;
   gap: var(--tracker-big-space);
+}
+.tracker-button {
+  border-radius: var(--tracker-small-space);
+  padding: var(--tracker-small-space);
 }

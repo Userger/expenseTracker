@@ -6,15 +6,18 @@ export function TrackerAppLayout({
   IncomeExpense,
   history,
   formTransaction,
+  settings,
 }: {
   header: ReactNode;
   balance: ReactNode;
   IncomeExpense: ReactNode;
   history: ReactNode;
   formTransaction: ReactNode;
+  settings: ReactNode;
 }) {
   return (
     <div className="tracker">
+      {settings}
       <div className="tracker-container tracker-flex">
         {header}
         <div className="tracker-h-container">
