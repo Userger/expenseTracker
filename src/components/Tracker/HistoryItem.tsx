@@ -10,6 +10,7 @@ export const HistoryItem = memo(function HistoryItem({
   deleteTransaction: (id: number) => void;
   click: (id: number) => void;
 }) {
+  console.log("trans", transaction.id);
   const formattedNum = Intl.NumberFormat().format(transaction.num);
   const size = {
     pad: transaction.clicked ? "0.5em" : "0em",

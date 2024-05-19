@@ -1,5 +1,4 @@
 import { useExpense } from "../../hooks/useExpense";
-import { useHeightFormHistory } from "../../hooks/useHeightFormHistory";
 import { Balance } from "./Balance";
 import { FormNewTransaction } from "./FormNewTransaction";
 import { Header } from "./Header";
@@ -11,15 +10,18 @@ import "./styles/index.css";
 import { HistoryDateContainer } from "./HistoryDateContainer";
 import { getAnotherView } from "../../model/historyAnotherView";
 import { useMemo } from "react";
+import { sortByDate } from "../../model/sortByDate";
 
 export function TrackerApp() {
   const { addTransaction, deleteTransaction, click, state } = useExpense();
 
-  const { opened, openClose } = useHeightFormHistory();
   const { history, balance, incomeSum, expenseSum } = state;
-  const anotherViewHistory = useMemo(() => {
-    return getAnotherView(history);
+  const sortedHistory = useMemo(() => {
+    return sortByDate(history);
   }, [history]);
+  const anotherViewHistory = useMemo(() => {
+    return getAnotherView(sortedHistory);
+  }, [sortedHistory]);
   return (
     <TrackerAppLayout
       header={<Header />}
@@ -46,13 +48,7 @@ export function TrackerApp() {
           }
         />
       }
-      formTransaction={
-        <FormNewTransaction
-          opened={opened}
-          openClose={openClose}
-          addTransaction={addTransaction}
-        />
-      }
+      formTransaction={<FormNewTransaction addTransaction={addTransaction} />}
     />
   );
 }

@@ -9,7 +9,6 @@ export const History = memo(function History({
     <div className="tracker-history-container">
       <h3>History</h3>
       <ul className={`tracker-historyList`}>{history}</ul>
-      {/* <ul className="tracker-historyList">{}</ul> */}
     </div>
   );
 });

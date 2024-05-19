@@ -1,4 +1,5 @@
-import { TransactionType } from "../../hooks/useExpense";
+import { useState } from "react";
+import { TransactionType, getBalance } from "../../hooks/useExpense";
 
 export function HistoryDateContainer({
   dateHistory,
@@ -15,10 +16,29 @@ export function HistoryDateContainer({
   deleteTransaction: (id: number) => void;
   click: (id: number) => void;
 }) {
+  const [opened, setOpened] = useState(false);
+  const dateHistoryBalance = getBalance(dateHistory);
   return (
     <li className="tracker-historyDateList">
-      <h4>{dateHistory[0].date.dateView}</h4>
-      <ul className={`tracker-historyList`}>
+      <div
+        className="tracker-dateHistory-title"
+        onClick={() => {
+          setOpened((prev) => !prev);
+        }}
+      >
+        <h4>{dateHistory[0].date.dateView}</h4>
+        <div
+          className={`tracker-historyList-balance ${dateHistoryBalance > 0 ? "tracker-dateHistory-balance-plus" : "tracker-dateHistory-balance-minus"}
+            ${opened ? "tracker-dateHistory-balance-opened" : ""}
+          `}
+        >
+          {dateHistoryBalance > 0 ? "+" : ""}
+          {dateHistoryBalance}$
+        </div>
+      </div>
+      <ul
+        className={`tracker-historyList tracker-dateHistoryList ${opened ? "tracker-dateHistoryList-opened" : ""}`}
+      >
         {dateHistory.length ? (
           dateHistory.map((transaction) => (
             <Item

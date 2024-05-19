@@ -18,6 +18,5 @@ export function getAnotherView(history: TransactionType[]) {
       newHistory[a]?.push(history[i]);
     }
   }
-  console.log(newHistory);
   return newHistory;
 }

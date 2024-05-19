@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 
 type TransactionsState = {
   balance: number;
@@ -16,7 +16,7 @@ export type TransactionType = {
   clicked: boolean;
 };
 
-function getBalance(history: TransactionType[]) {
+export function getBalance(history: TransactionType[]) {
   return history.reduce((sum, exp) => {
     return exp.type === "expense" ? sum - exp.num : sum + exp.num;
   }, 0);
@@ -71,10 +71,8 @@ function reducer(
         num: action.payload.num,
         clicked: false,
       };
-      console.log(newExpenseIncome.date.dateI);
       const newHistory = [...state.history, newExpenseIncome];
       const { expSum, incSum } = getExpenseSum(newHistory);
-      console.log(newHistory);
       return {
         ...state,
         balance: getBalance(newHistory),
@@ -120,7 +118,7 @@ const initState: TransactionsState = {
 export function useExpense() {
   const [state, dispatch] = useReducer(reducer, initState);
 
-  function addTransaction(payload: {
+  const addTransaction = useCallback(function addTransaction(payload: {
     type: "expense" | "income";
     descr: string;
     num: number;
@@ -128,13 +126,15 @@ export function useExpense() {
     date: string
   }) {
     dispatch({ type: "add", payload: payload });
-    console.log("addded");
-  }
-  function deleteTransaction(id: number) {
+  }, [dispatch])
+
+  const deleteTransaction = useCallback(function deleteTransaction(id: number) {
     dispatch({ type: "delete", payload: { id } });
-  }
-  function click(id: number) {
+  }, [dispatch])
+
+  const click = useCallback(function click(id: number) {
     dispatch({ type: "click", payload: { id } });
-  }
+  }, [dispatch])
+
   return { addTransaction, deleteTransaction, click, state };
 }

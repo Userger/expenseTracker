@@ -4,8 +4,6 @@
   overflow: hidden;
   gap: var(--tracker-small-space);
 }
-.tracker .tracker-history-container h3 {
-}
 .tracker .tracker-li-container {
   display: flex;
   flex-direction: row;
@@ -19,6 +17,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--tracker-small-space);
+  padding: var(--tracker-small-space);
 }
 
 .tracker .tracker-li-h-container {
@@ -63,4 +62,29 @@
   transition: 200ms linear;
   padding: var(--tracker-small-space);
   flex-shrink: 0;
+}
+.tracker-dateHistory-title {
+  display: flex;
+  gap: var(--tracker-big-space);
+  overflow: hidden;
+}
+.tracker-historyList-balance {
+  overflow: hidden;
+  transition: transform 300ms linear;
+}
+.tracker-dateHistory-balance-plus {
+  color: var(--green-color);
+}
+.tracker-dateHistory-balance-minus {
+  color: var(--red-color);
+}
+.tracker-dateHistory-balance-opened {
+  transform: translateY(100%);
+}
+.tracker-dateHistoryList {
+  max-height: 0em;
+  transition: 300ms linear;
+}
+.tracker-dateHistoryList-opened {
+  max-height: 20em;
 }

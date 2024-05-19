@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useTransTypeCategory } from "../../hooks/useTransTypeCategory";
+import { useHeightFormHistory } from "../../hooks/useHeightFormHistory";
 
 export function FormNewTransaction({
   addTransaction,
-  opened,
-  openClose,
 }: {
   addTransaction: (p: {
     type: "expense" | "income";
@@ -13,12 +12,10 @@ export function FormNewTransaction({
     category: string;
     date: string;
   }) => void;
-  opened: boolean;
-  openClose: () => void;
 }) {
+  const { opened, openClose } = useHeightFormHistory();
   const [descr, setDescr] = useState("");
   const [sum, setSum] = useState("");
-
   const {
     categoryType: { transType, category },
     setCategory,
@@ -55,7 +52,7 @@ export function FormNewTransaction({
             onChange={(e) => {
               setTransType(e.target.value as "expense" | "income");
             }}
-            defaultValue="expense"
+            value={transType}
           >
             <option value="expense">expense</option>
             <option value="income">income</option>
@@ -82,7 +79,7 @@ export function FormNewTransaction({
             onChange={(e) => {
               setCategory(e.target.value);
             }}
-            defaultValue={category}
+            value={category}
           >
             {transType === "expense" ? (
               <>
