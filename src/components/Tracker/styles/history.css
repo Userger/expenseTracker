@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row;
   justify-content: start;
-  gap: var(--tracker-small-space);
+  gap: var(--tracker-big-space);
   width: 100%;
 }
 .tracker .tracker-historyList {
@@ -26,6 +26,7 @@
   gap: var(--tracker-small-space);
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 .tracker .tracker-li {
   display: flex;
@@ -33,10 +34,11 @@
   gap: var(--tracker-small-space);
 }
 .tracker .tracker-descr {
+  font-size: 0.9em;
   max-height: 1px;
   word-break: break-all;
-  padding-inline: var(--tracker-big-space);
-  border-radius: var(--tracker-big-space);
+  padding-inline: var(--tracker-small-space);
+  border-radius: var(--tracker-small-space);
   background: var(--light-color2);
   transition: 900ms ease-in-out;
   overflow: hidden;
@@ -63,28 +65,36 @@
   padding: var(--tracker-small-space);
   flex-shrink: 0;
 }
-.tracker-dateHistory-title {
+.tracker .tracker-dateHistory-title {
   display: flex;
   gap: var(--tracker-big-space);
   overflow: hidden;
 }
-.tracker-historyList-balance {
+.tracker .tracker-historyList-balance {
   overflow: hidden;
   transition: transform 300ms linear;
 }
-.tracker-dateHistory-balance-plus {
+.tracker .tracker-dateHistory-balance-plus {
   color: var(--green-color);
 }
-.tracker-dateHistory-balance-minus {
+.tracker .tracker-dateHistory-balance-minus {
   color: var(--red-color);
 }
-.tracker-dateHistory-balance-opened {
+.tracker .tracker-dateHistory-balance-opened {
   transform: translateY(100%);
 }
-.tracker-dateHistoryList {
+.tracker .tracker-dateHistoryList {
   max-height: 0em;
   transition: 300ms linear;
 }
-.tracker-dateHistoryList-opened {
+.tracker .tracker-dateHistoryList-opened {
   max-height: 20em;
+}
+.tracker .tracker-historyList-date {
+  color: var(--border-color);
+  transition: color 200ms linear;
+  cursor: pointer;
+}
+.tracker .tracker-historyList-date:hover {
+  color: var(--prime-color);
 }

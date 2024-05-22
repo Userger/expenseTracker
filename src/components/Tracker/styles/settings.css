@@ -1,48 +1,52 @@
-.tracker .tracker-settings {
+.tracker .tracker-settings-sign {
   position: absolute;
+  top: 0;
   right: 0;
-  background: white;
-  z-index: 100000;
-  border: 1px solid var(--light-color2);
-  padding-inline: var(--tracker-big-space);
-  padding-block: var(--tracker-small-space);
-  border-bottom-left-radius: var(--tracker-br);
+  font-size: 1.5em;
+  padding-inline: var(--tracker-small-space);
+  cursor: pointer;
   color: var(--light-color);
+  background: none;
+  z-index: 10002;
 }
-.tracker .tracker-settings.tracker-settings-opened {
-  border-radius: var(--tracker-br);
+.tracker .tracker-settings-sign:hover {
+  color: var(--border-color);
 }
 
-.tracker .tracker-settings-bar {
-  display: flex;
-  align-items: center;
-}
-.tracker .tracker-settings-sign {
-  font-size: 2em;
-}
-.tracker .tracker-settings-title {
-  font-size: 1.3em;
-  max-width: 0;
-  overflow: hidden;
-  transition: 300ms linear;
-  padding-inline: 0;
-}
-.tracker .tracker-settings-opened .tracker-settings-title {
-  max-width: 5em;
-  padding-inline: var(--tracker-small-space);
-}
-.tracker-settings-field {
+.tracker .tracker-settings {
+  position: absolute;
+  z-index: 10001;
   height: 0;
   width: 0;
+  padding: 0;
   overflow: hidden;
+  color: transparent;
+  background: transparent;
+  border-radius: var(--tracker-br);
   transition:
-    height 300ms linear,
-    width 300ms linear;
+    background 0ms linear,
+    color 0ms ease;
 }
-.tracker-settings-field-opened {
-  height: 6em;
-  width: 5em;
+.tracker .tracker-settings.tracker-settings-opened {
+  height: 100%;
+  width: 100%;
+  color: var(--prime-color);
+  padding: var(--tracker-big-space);
+  background: var(--light-color2);
   transition:
-    height 300ms 300ms linear,
-    width 300ms 300ms linear;
+    background 200ms linear,
+    color 200ms ease;
+}
+.tracker .tracker-settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--tracker-big-space) / 2);
+}
+.tracker .tracker-setting-container {
+  display: flex;
+  justify-content: space-between;
+}
+.tracker .tracker-settings-title {
+  text-decoration: underline;
+  margin-block-end: var(--tracker-big-space);
 }

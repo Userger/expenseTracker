@@ -69,4 +69,5 @@
 .tracker-button {
   border-radius: var(--tracker-small-space);
   padding: var(--tracker-small-space);
+  cursor: pointer;
 }

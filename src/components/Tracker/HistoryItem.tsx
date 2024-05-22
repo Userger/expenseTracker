@@ -1,5 +1,6 @@
 import { TransactionType } from "../../hooks/useExpense";
 import { memo } from "react";
+import { CurrencyElement } from "./CurrencyElement";
 
 export const HistoryItem = memo(function HistoryItem({
   transaction,
@@ -20,21 +21,29 @@ export const HistoryItem = memo(function HistoryItem({
     <li
       key={transaction.id}
       className={`tracker-li ${transaction.clicked ? "tracker-li-clicked" : ""}`}
-      onClick={() => {
-        click(transaction.id);
-      }}
     >
-      <div className="tracker-li-h-container">
+      <div
+        className="tracker-li-h-container"
+        onClick={() => {
+          click(transaction.id);
+        }}
+      >
         <div className="tracker-li-container">
           {transaction.type === "income" ? (
-            <div className={`tracker-num tracker-inc`}>+{formattedNum}$</div>
+            <div className={`tracker-num tracker-inc`}>
+              +{formattedNum}
+              <CurrencyElement />
+            </div>
           ) : (
-            <div className={`tracker-num tracker-exp`}>-{formattedNum}$</div>
+            <div className={`tracker-num tracker-exp`}>
+              -{formattedNum}
+              <CurrencyElement />
+            </div>
           )}
           <div>{transaction.category}</div>
         </div>
         <button
-          className="tracker-delete"
+          className="tracker-button tracker-delete"
           style={{ maxWidth: size.width, paddingInline: size.pad }}
           onClick={() => deleteTransaction(transaction.id)}
         >
