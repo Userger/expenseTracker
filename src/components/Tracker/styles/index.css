@@ -1,73 +1,104 @@
-@import url("./history.css");
-@import url("./form.css");
-@import url("./incomeExpense.css");
-@import url("./currency.css");
-@import url("./settings.css");
+@import url('./history.css');
+@import url('./form.css');
+@import url('./incomeExpense.css');
+@import url('./currency.css');
+@import url('./settings.css');
+@import url('./balance.css');
 
 :root {
-  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  --prime-color: #1c1c1c;
-  --border-color: #949494;
-  --form-color: #c5dde3;
-  --light-color: #bbb;
-  --light-color2: #ddd;
-  --red-color: #ff8f8f;
-  --green-color: #508d69;
-  --light-green-color: #9ade7b;
-  --tracker-small-space: 0.25em;
-  --tracker-big-space: 1em;
-  --tracker-br: 0.5em;
-  --tracker-br-small: 0.25em;
+    --title-fs: 16px;
+    --title-color: #707070;
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --prime-color: #1c1c1c;
+    --border-color: #949494;
+    --form-color: #c5dde3;
+    --light-color: #bbb;
+    --light-color2: #ddd;
+    --red-color: #ff8f8f;
+    --green-color: #508d69;
+    --light-green-color: #9ade7b;
+    --tracker-s-space: 4px;
+    --tracker-m-space: 8px;
+    --tracker-l-space: 16px;
+    --tracker-br: 16px;
+    --tracker-br-small: 6px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-size: inherit;
 }
 
 .tracker * {
-  margin: 0;
-  padding: 0;
-  border: none;
-  /* border: 2px red solid; */
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+    /* border: 2px red solid; */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 .tracker input,
 .tracker select,
 .tracker button {
-  font-size: inherit;
+    font-size: inherit;
 }
 .tracker {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--tracker-big-space);
-  background: #f7f7f7;
-  border-radius: var(--tracker-br);
-  height: 600px;
+    position: relative;
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    background: #f7f7f7;
+    border-radius: var(--tracker-br);
+    overflow: hidden;
 }
-
-.tracker-container {
-  width: 400px;
-  height: 100%;
-  padding: var(--tracker-big-space);
-  overflow: hidden;
+.tracker .tracker-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--tracker-l-space);
+    padding: var(--tracker-l-space);
+    overflow: hidden;
 }
 
 .tracker-h-container {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: start;
+    gap: var(--tracker-l-space);
 }
 
-.tracker-flex {
-  display: flex;
-  flex-direction: column;
-  gap: var(--tracker-big-space);
-}
 .tracker-h-flex {
-  display: flex;
-  flex-direction: row;
-  gap: var(--tracker-big-space);
+    display: flex;
+    flex-direction: row;
+    gap: var(--tracker-l-space);
 }
 .tracker-button {
-  border-radius: var(--tracker-small-space);
-  padding: var(--tracker-small-space);
-  cursor: pointer;
+    border-radius: var(--tracker-s-space);
+    padding: var(--tracker-s-space);
+    cursor: pointer;
+}
+.tracker .tracker-title {
+    font-size: var(--title-fs);
+    color: var(--title-color);
+}
+.tracker .tracker-main-title {
+    font-size: 1.5em;
+    background: var(--light-color2);
+    padding-block: var(--tracker-m-space);
+    padding-inline: var(--tracker-l-space);
+}
+.tracker .tracker-box {
+    padding: var(--tracker-m-space);
+    border: 2px solid var(--light-color2);
+    border-radius: var(--tracker-br-small);
+}
+.tracker .tracker-out-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tracker-s-space);
 }

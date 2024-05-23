@@ -1,24 +1,28 @@
-import { Currency } from "./Currency";
+import { Currency } from './Currency'
 
 export function IncomeExpense({
-  expenseSum,
-  incomeSum,
+    expenseSum,
+    incomeSum,
 }: {
-  expenseSum: number;
-  incomeSum: number;
+    expenseSum: number
+    incomeSum: number
 }) {
-  const formattedExpenseSum = Intl.NumberFormat().format(expenseSum);
-  const formattedIncomeSum = Intl.NumberFormat().format(incomeSum);
-  return (
-    <div className="tracker-incExp-container">
-      <div className="tracker-incExp-expense">
-        expense = <Currency />
-        {formattedExpenseSum}
-      </div>
-      <div className="tracker-incExp-income">
-        income = <Currency />
-        {formattedIncomeSum}
-      </div>
-    </div>
-  );
+    const formattedExpenseSum = Intl.NumberFormat().format(expenseSum)
+    const formattedIncomeSum = Intl.NumberFormat().format(incomeSum)
+    return (
+        <div className="tracker-out-box">
+            <h2 className="tracker-title">income/expense:</h2>
+            <div className="tracker-box tracker-incExp-container">
+                <div className="tracker-incExp-income">
+                    <Currency />
+                    {formattedIncomeSum}
+                </div>
+                /
+                <div className="tracker-incExp-expense">
+                    <Currency />
+                    {formattedExpenseSum}
+                </div>
+            </div>
+        </div>
+    )
 }

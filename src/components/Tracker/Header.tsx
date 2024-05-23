@@ -1,3 +1,3 @@
 export function Header() {
-  return <h2>Expense Tracker</h2>;
+  return <h2 className="tracker-main-title">Expense Tracker</h2>;
 }

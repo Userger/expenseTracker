@@ -1,11 +1,15 @@
-.tracker-incExp-container {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.25em;
+.tracker .tracker-incExp-container {
+    min-width: 8em;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
 }
 .tracker-incExp-income {
-  color: var(--green-color);
+    color: var(--green-color);
 }
 .tracker-incExp-expense {
-  color: var(--red-color);
+    color: var(--red-color);
 }
