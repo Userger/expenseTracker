@@ -1,4 +1,4 @@
-import { Currency } from "./Currency"
+import { CurrencyElement } from "./CurrencyElement"
 
 export function Balance({ balance }: { balance: number }) {
     const formattedBalance = Intl.NumberFormat().format(balance)
@@ -7,7 +7,7 @@ export function Balance({ balance }: { balance: number }) {
             <h2 className="tracker-title">Balance:</h2>
             <div className="tracker-box tracker-balance">
                 {formattedBalance}
-                <Currency />
+                <CurrencyElement />
             </div>
         </div>
     )

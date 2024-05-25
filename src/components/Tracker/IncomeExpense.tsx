@@ -1,4 +1,4 @@
-import { Currency } from "./Currency"
+import { CurrencyElement } from "./CurrencyElement"
 
 export function IncomeExpense({
     expenseSum,
@@ -15,12 +15,12 @@ export function IncomeExpense({
             <div className="tracker-box tracker-incExp-container">
                 <div className="tracker-incExp-income">
                     {formattedIncomeSum}
-                    <Currency />
+                    <CurrencyElement />
                 </div>
                 /
                 <div className="tracker-incExp-expense">
                     {formattedExpenseSum}
-                    <Currency />
+                    <CurrencyElement />
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode } from "react"
 
 export function TrackerAppLayout({
     header,
@@ -17,7 +17,7 @@ export function TrackerAppLayout({
 }) {
     return (
         <div className="tracker">
-            {/* {settings} */}
+            {settings}
             {header}
             <div className="tracker-container">
                 <div className="tracker-h-container">
