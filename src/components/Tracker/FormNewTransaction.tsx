@@ -2,15 +2,16 @@ import { memo, useState } from "react"
 import { useTransTypeCategory } from "../../hooks/useTransTypeCategory"
 import { useOpenForm } from "../../store/formOpened"
 import { getDateString } from "../../hooks/useTransaction"
+import classes from "./styles/form.module.css"
 
 export const FormNewTransaction = memo(function FormNewTransaction({
     addTransaction,
 }: {
     addTransaction: (
-            date: string,
-            num: number,
-            category: string,
-            descr: string
+        date: string,
+        num: number,
+        category: string,
+        descr: string
     ) => void
 }) {
     console.log("form")
@@ -36,26 +37,27 @@ export const FormNewTransaction = memo(function FormNewTransaction({
                 date,
                 Number(transType === "expense" ? -sum : sum),
                 category,
-                descr,
+                descr
             )
             setDescr("")
             setSum("")
         }
     }
+
     return (
-        <div className="tracker-out-box tracker-form">
+        <div className={`tracker-out-box ${classes.form}`}>
             <h2
                 onClick={openCloseForm}
-                className="tracker-title tracker-form-title"
+                className={`tracker-title ${classes.title}`}
             >
                 New transaction:
             </h2>
             <form
-                className={`tracker-form-container ${formOpened ? "tracker-form-container-opened" : ""}`}
+                className={`${classes.container} ${formOpened ? classes.containerOpened : ""}`}
             >
-                <div className="tracker-form-h-container">
+                <div className={classes.hContainer}>
                     <select
-                        className={`tracker-form-select ${sum ? "tracker-form-input-hasText" : ""}`}
+                        className={`${classes.select} ${sum ? classes.inputHasText : ""}`}
                         onChange={(e) => {
                             setTransType(e.target.value as "expense" | "income")
                         }}
@@ -67,7 +69,7 @@ export const FormNewTransaction = memo(function FormNewTransaction({
                     <input
                         autoComplete="off"
                         id="tracker-value"
-                        className={`tracker-form-input ${sum ? "tracker-form-input-hasText" : ""}`}
+                        className={`${classes.input} ${sum ? classes.inputHasText : ""}`}
                         type="text"
                         value={sum}
                         placeholder={`how much you ${transType === "income" ? "got" : "spent"}...`}
@@ -82,9 +84,9 @@ export const FormNewTransaction = memo(function FormNewTransaction({
                         }}
                     />
                 </div>
-                <div className="tracker-form-h-container">
+                <div className={classes.hContainer}>
                     <select
-                        className={`tracker-form-select ${descr.trim() ? "tracker-form-input-hasText" : ""}`}
+                        className={`${classes.select} ${descr.trim() ? classes.inputHasText : ""}`}
                         onChange={(e) => {
                             setCategory(e.target.value)
                         }}
@@ -105,7 +107,7 @@ export const FormNewTransaction = memo(function FormNewTransaction({
                     <input
                         autoComplete="off"
                         id="tracker-descr"
-                        className={`tracker-form-input ${descr.trim() ? "tracker-form-input-hasText" : ""}`}
+                        className={`${classes.input} ${descr.trim() ? classes.inputHasText : ""}`}
                         type="text"
                         value={descr}
                         placeholder="Enter description..."
@@ -120,7 +122,7 @@ export const FormNewTransaction = memo(function FormNewTransaction({
                     onChange={(e) => setDate(e.target.value)}
                 />
                 <button
-                    className="tracker-form-submitButton"
+                    className={classes.submitButton}
                     type="submit"
                     disabled={!canSubmit()}
                     onClick={(e) => {

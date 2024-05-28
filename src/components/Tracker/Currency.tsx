@@ -1,18 +1,20 @@
 import { currencies } from "../../constants/currencies"
-import { useCurrency } from "../../store/currency"
+import { useCurrencyParams } from "../../hooks/useCurrencyParams"
+import classes from "./styles/currency.module.css"
 
 export function Currency() {
-    const { currency } = useCurrency()
+    const { currency } = useCurrencyParams()
+    const _currency = currency ?? "$"
     return (
-        <div className="tracker-currency">
+        <div className={classes.currency}>
             <div
-                className="tracker-currencies-container"
+                className={classes.container}
                 style={{
-                    transform: `translateX(${-100 * currencies.indexOf(currency)}%)`,
+                    transform: `translateX(${-100 * currencies.indexOf(_currency)}%)`,
                 }}
             >
                 {currencies.map((c) => (
-                    <div key={c} className="tracker-currency-container">
+                    <div key={c} className={classes.currencyContainer}>
                         {c}
                     </div>
                 ))}

@@ -1,0 +1,25 @@
+.currency {
+    --currency-width: 0.63em;
+    font-family: monospace;
+    display: inline-block;
+    width: var(--currency-width);
+    overflow: hidden;
+    font-size: inherit;
+    line-height: 1.23;
+    vertical-align: top;
+}
+.container {
+    display: flex;
+    justify-content: start;
+    transition: transform 300ms linear;
+}
+.currencyContainer {
+    text-align: center;
+    flex-shrink: 0;
+    width: var(--currency-width);
+}
+.currencyChoose {
+    display: flex;
+    gap: var(--tracker-small-space);
+    align-items: center;
+}

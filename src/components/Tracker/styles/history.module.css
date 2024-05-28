@@ -1,28 +1,69 @@
-.tracker .tracker-history {
+.history {
     height: 100%;
     overflow: hidden;
+    position: relative;
 }
-.tracker .tracker-historyList {
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+.tracker .tracker-history-filter {
+    display: flex;
+    gap: var(--tracker-s-space);
+}
+.historyList {
     height: 100%;
     overflow: auto;
     display: flex;
     flex-direction: column;
     gap: var(--tracker-s-space);
 }
-.tracker .tracker-dateHistoryList {
+
+/*date history list*/
+.dateHistoryList {
     max-height: 0em;
 }
-.tracker .tracker-dateHistoryList-opened {
+.dateHistoryList.dateHistoryListOpened {
     max-height: initial;
     padding: var(--tracker-s-space);
 }
-.tracker .tracker-li {
+.dateTitle {
+    display: flex;
+    gap: var(--tracker-l-space);
+    overflow: hidden;
+}
+.date {
+    color: var(--border-color);
+    transition: color 200ms linear;
+    cursor: pointer;
+}
+.date:hover {
+    color: var(--prime-color);
+}
+
+/*balance that showed in date history list title*/
+.dateBalance {
+    overflow: hidden;
+    transition: transform 300ms linear;
+}
+.dateBalancePlus {
+    color: var(--green-color);
+}
+.dateBalanceMinus {
+    color: var(--red-color);
+}
+.dateBalanceOpened {
+    transform: translateY(100%);
+}
+
+/* history item */
+.historyItem {
     display: flex;
     flex-direction: column;
     gap: var(--tracker-s-space);
     border-bottom: 1px solid var(--light-color2);
 }
-.tracker .tracker-li-h-container {
+.historyItemHContainer {
     width: 100%;
     display: flex;
     gap: var(--tracker-s-space);
@@ -30,14 +71,14 @@
     align-items: center;
     cursor: pointer;
 }
-.tracker .tracker-li-container {
+.historyItemContainer {
     display: flex;
     justify-content: start;
     gap: var(--tracker-l-space);
     width: 100%;
 }
 
-.tracker .tracker-descr {
+.descr {
     font-size: 0.9em;
     max-height: 0px;
     word-break: break-all;
@@ -46,57 +87,34 @@
     overflow: hidden;
     box-shadow: inset 0px 0px 18px 1px gray;
 }
-.tracker .tracker-li-clicked .tracker-descr {
+.historyItemOpened .descr {
     max-height: initial;
     padding: var(--tracker-s-space);
 }
-.tracker .tracker-num {
+.num {
     min-width: 100px;
     text-align: start;
     padding-inline-start: var(--tracker-s-space);
 }
-.tracker .tracker-li-date {
-    margin-inline-start: auto;
-}
-.tracker .tracker-exp {
+.exp {
     color: var(--red-color);
 }
-.tracker .tracker-inc {
+.inc {
     color: var(--green-color);
 }
-.tracker .tracker-delete {
+.deleteButton {
     overflow: hidden;
     transition: 200ms linear;
-    padding: 0;
+    max-width: 0;
+    padding: 0 !important;
     padding-inline: var(--tracker-s-space);
     flex-shrink: 0;
 }
-.tracker .tracker-dateHistory-title {
-    display: flex;
-    gap: var(--tracker-l-space);
-    overflow: hidden;
-}
-.tracker .tracker-historyList-balance {
-    overflow: hidden;
-    transition: transform 300ms linear;
-}
-.tracker .tracker-dateHistory-balance-plus {
-    color: var(--green-color);
-}
-.tracker .tracker-dateHistory-balance-minus {
-    color: var(--red-color);
-}
-.tracker .tracker-dateHistory-balance-opened {
-    transform: translateY(100%);
-}
-.tracker .tracker-historyList-date {
-    color: var(--border-color);
-    transition: color 200ms linear;
-    cursor: pointer;
-}
-.tracker .tracker-historyList-date:hover {
-    color: var(--prime-color);
-}
-.tracker .tracker-hi-category {
+.category {
     justify-self: center;
+}
+
+.deleteButtonShow {
+    max-width: 5em;
+    padding-inline: var(--tracker-s-space) !important;
 }

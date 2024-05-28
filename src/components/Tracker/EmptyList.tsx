@@ -1,11 +1,12 @@
-import { useOpenForm } from '../../store/formOpened'
+import { useOpenForm } from "../../store/formOpened"
+import classes from "./styles/emptyList.module.css"
 
 export function EmptyList() {
     const { formOpened } = useOpenForm()
     return (
-        <div className="tracker-emptyList">
+        <div className={classes.emptyList}>
             empty list...
-            {formOpened ? '' : <div className="tracker-arrow">↓</div>}
+            {formOpened ? "" : <div className={classes.arrow}>↓</div>}
         </div>
     )
 }

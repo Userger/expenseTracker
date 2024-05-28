@@ -1,4 +1,5 @@
 import { ReactNode, useState } from "react"
+import classes from "./styles/settings.module.css"
 
 export function Settings({ currencyChoose }: { currencyChoose: ReactNode }) {
     const [opened, setOpened] = useState(false)
@@ -6,21 +7,21 @@ export function Settings({ currencyChoose }: { currencyChoose: ReactNode }) {
     return (
         <>
             <div
-                className={`tracker-settings ${opened ? "tracker-settings-opened" : ""}`}
+                className={`${classes.settings} ${opened ? classes.settingsOpened : ""}`}
             >
-                <div className="tracker-settings-bar">
-                    <div className={`tracker-settings-title`}>
+                <div className={`${classes.bar}`}>
+                    <div className={`${classes.title}`}>
                         <h3>Settings</h3>
                     </div>
                 </div>
-                <div className={`tracker-settings-field`}>
-                    <div className="tracker-setting-container">
+                <div className={`${classes.field}`}>
+                    <div className={`${classes.container}`}>
                         currency:{currencyChoose}
                     </div>
                 </div>
             </div>
             <button
-                className={`tracker-settings-sign`}
+                className={`${classes.sign}`}
                 onClick={() => setOpened((prev) => !prev)}
             >
                 ⚙

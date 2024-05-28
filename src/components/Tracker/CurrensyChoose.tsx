@@ -1,23 +1,16 @@
 import { useCurrencyParams } from "../../hooks/useCurrencyParams"
-// import { useCurrency } from "../../store/currency";
-import { CurrencyElement } from "./CurrencyElement"
+import { Currency } from "./Currency"
+import classes from "./styles/currency.module.css"
 
 export function CurrencyChoose() {
-    // const { nextCurrency, prevCurrency } = useCurrency();
     const { nextCurrency, prevCurrency } = useCurrencyParams()
     return (
-        <div className="tracker-currency-choose">
-            <button
-                className="tracker-currency-prevButton tracker-button"
-                onClick={() => prevCurrency()}
-            >
+        <div className={classes.currencyChoose}>
+            <button className="tracker-button" onClick={() => prevCurrency()}>
                 ←
             </button>
-            <CurrencyElement />
-            <button
-                className="tracker-currency-nextButton tracker-button"
-                onClick={() => nextCurrency()}
-            >
+            <Currency />
+            <button className="tracker-button" onClick={() => nextCurrency()}>
                 →
             </button>
         </div>

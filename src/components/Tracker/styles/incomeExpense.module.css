@@ -1,4 +1,4 @@
-.tracker .tracker-incExp-container {
+.container {
     min-width: 8em;
     height: 100%;
     display: flex;
@@ -7,9 +7,9 @@
     align-items: center;
     font-size: 1.1em;
 }
-.tracker-incExp-income {
+.income {
     color: var(--green-color);
 }
-.tracker-incExp-expense {
+.expense {
     color: var(--red-color);
 }

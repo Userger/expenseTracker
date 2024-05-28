@@ -1,0 +1,44 @@
+.settings {
+    display: none;
+    position: absolute;
+    z-index: 10001;
+    height: 100%;
+    width: 100%;
+    padding: var(--tracker-l-space);
+    overflow: hidden;
+    color: transparent;
+    background: transparent;
+    border-radius: var(--tracker-br);
+}
+
+.settings.settingsOpened {
+    display: block;
+    color: var(--prime-color);
+    background: var(--light-color2);
+}
+.bar {
+}
+.title {
+    text-decoration: underline;
+    margin-block-end: var(--tracker-l-space);
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--tracker-l-space) / 2);
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.sign {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5em;
+    padding-inline: var(--tracker-m-space);
+    cursor: pointer;
+    color: var(--light-color);
+    background: none;
+    z-index: 10002;
+}

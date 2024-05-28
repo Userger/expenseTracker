@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import classes from "./styles/tracker.module.css"
 
 export function TrackerAppLayout({
     header,
@@ -16,11 +17,11 @@ export function TrackerAppLayout({
     settings: ReactNode
 }) {
     return (
-        <div className="tracker">
+        <div className={`${classes.tracker}`}>
             {settings}
             {header}
-            <div className="tracker-container">
-                <div className="tracker-h-container">
+            <div className={`${classes.container}`}>
+                <div className={`${classes.hContainer}`}>
                     {balance}
                     {IncomeExpense}
                 </div>

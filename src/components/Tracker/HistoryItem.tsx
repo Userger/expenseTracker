@@ -1,6 +1,7 @@
 import { TransactionType } from "../../hooks/useTransaction"
 import { memo, useState } from "react"
 import { CurrencyElement } from "./CurrencyElement"
+import classes from "./styles/history.module.css"
 
 export const HistoryItem = memo(function HistoryItem({
     transaction,
@@ -9,49 +10,44 @@ export const HistoryItem = memo(function HistoryItem({
     transaction: TransactionType
     deleteTransaction: (id: number) => void
 }) {
-    const [clicked, click] = useState(false)
+    const [opened, setOpened] = useState(false)
     console.log("trans", transaction.id)
     const formattedNum = Intl.NumberFormat().format(transaction.num)
-    const size = {
-        pad: clicked ? "0.5em" : "0em",
-        width: clicked ? "5em" : "0em",
-    }
     return (
         <li
             key={transaction.id}
-            className={`tracker-li ${clicked ? "tracker-li-clicked" : ""}`}
+            className={`${classes.historyItem} ${opened ? classes.historyItemOpened : ""}`}
         >
             <div
-                className="tracker-li-h-container"
+                className={classes.historyItemHContainer}
                 onClick={() => {
-                    click((prev) => !prev)
+                    setOpened((prev) => !prev)
                 }}
             >
-                <div className="tracker-li-container">
+                <div className={classes.historyItemContainer}>
                     {transaction.num > 0 ? (
-                        <div className={`tracker-num tracker-inc`}>
+                        <div className={`${classes.num} ${classes.inc}`}>
                             +{formattedNum}
                             <CurrencyElement />
                         </div>
                     ) : (
-                        <div className={`tracker-num tracker-exp`}>
+                        <div className={`${classes.num} ${classes.exp}`}>
                             {formattedNum}
                             <CurrencyElement />
                         </div>
                     )}
-                    <div className="tracker-hi-category">
+                    <div className={classes.category}>
                         {transaction.category}
                     </div>
                 </div>
                 <button
-                    className="tracker-button tracker-delete"
-                    style={{ maxWidth: size.width, paddingInline: size.pad }}
+                    className={`tracker-button ${classes.deleteButton} ${opened ? classes.deleteButtonShow : ""}`}
                     onClick={() => deleteTransaction(transaction.id)}
                 >
                     remove
                 </button>
             </div>
-            <div className="tracker-descr">{transaction.descr}</div>
+            <div className={classes.descr}>{transaction.descr}</div>
         </li>
     )
 })

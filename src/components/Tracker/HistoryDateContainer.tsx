@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { TransactionType, getBalance } from "../../hooks/useTransaction"
 import { CurrencyElement } from "./CurrencyElement"
+import classes from "./styles/history.module.css"
 
 export function HistoryDateContainer({
     dateHistory,
@@ -15,12 +16,12 @@ export function HistoryDateContainer({
     deleteTransaction: (id: number) => void
 }) {
     const [opened, setOpened] = useState(true)
-    const dateHistoryBalance = getBalance(dateHistory)
+    const dateBalance = getBalance(dateHistory)
     return (
-        <li className="tracker-historyDateList">
-            <div className="tracker-dateHistory-title">
+        <li>
+            <div className={`${classes.dateTitle}`}>
                 <h4
-                    className="tracker-historyList-date"
+                    className={`${classes.date}`}
                     onClick={() => {
                         setOpened((prev) => !prev)
                     }}
@@ -28,29 +29,25 @@ export function HistoryDateContainer({
                     {dateHistory[0].date}
                 </h4>
                 <div
-                    className={`tracker-historyList-balance ${dateHistoryBalance > 0 ? "tracker-dateHistory-balance-plus" : "tracker-dateHistory-balance-minus"}
-            ${opened ? "tracker-dateHistory-balance-opened" : ""}
+                    className={`${classes.dateBalance} ${dateBalance > 0 ? classes.dateBalancePlus : classes.dateBalanceMinus}
+            ${opened ? classes.dateBalanceOpened : ""}
           `}
                 >
-                    {dateHistoryBalance > 0 ? "+" : ""}
-                    {dateHistoryBalance}
+                    {dateBalance > 0 ? "+" : ""}
+                    {dateBalance}
                     <CurrencyElement />
                 </div>
             </div>
             <ul
-                className={`tracker-historyList tracker-dateHistoryList ${opened ? "tracker-dateHistoryList-opened" : ""}`}
+                className={`${classes.historyList} ${classes.dateHistoryList} ${opened ? classes.dateHistoryListOpened : ""}`}
             >
-                {dateHistory.length ? (
-                    dateHistory.map((transaction) => (
-                        <Item
-                            deleteTransaction={deleteTransaction}
-                            key={transaction.id}
-                            transaction={transaction}
-                        />
-                    ))
-                ) : (
-                    <div>empty list...</div>
-                )}
+                {dateHistory.map((transaction) => (
+                    <Item
+                        deleteTransaction={deleteTransaction}
+                        key={transaction.id}
+                        transaction={transaction}
+                    />
+                ))}
             </ul>
         </li>
     )

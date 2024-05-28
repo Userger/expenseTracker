@@ -1,17 +1,17 @@
-.tracker .tracker-form {
+.form {
     transition: all 200ms linear;
 }
-.tracker .tracker-form-title {
+.title {
     text-decoration: underline;
     cursor: pointer;
     transition:
         color 200ms ease,
         background 300ms linear;
 }
-.tracker .tracker-form-title:hover {
+.title:hover {
     color: var(--light-color2);
 }
-.tracker .tracker-form-container {
+.container {
     border: none;
     max-height: 0;
     display: flex;
@@ -21,13 +21,13 @@
     gap: var(--tracker-m-space);
     transition: 300ms linear;
 }
-.tracker .tracker-form-container.tracker-form-container-opened {
+.container.containerOpened {
     max-height: 20em;
     padding-block: var(--tracker-m-space);
     gap: var(--tracker-m-space);
 }
 
-.tracker .tracker-form-input {
+.input {
     width: 100%;
     border: none;
     outline: none;
@@ -35,11 +35,11 @@
     border-radius: var(--tracker-br-small);
     background: var(--light-color2);
 }
-.tracker .tracker-form-input-hasText {
+.inputHasText {
     background: var(--light-color);
 }
 
-.tracker .tracker-form-submitButton {
+.submitButton {
     padding: var(--tracker-s-space);
     transition: all 50ms ease-in;
     box-shadow: 0 3px 0 var(--border-color);
@@ -48,36 +48,36 @@
     transform: translateY(-3px);
     background: var(--light-color);
 }
-.tracker .tracker-form-submitButton:hover:enabled {
+.submitButton:hover:enabled {
     filter: brightness(1.1);
     cursor: pointer;
 }
-.tracker .tracker-form-submitButton:active:enabled {
+.submitButton:active:enabled {
     box-shadow: 0 0px 0 var(--border-color);
     transform: translateY(0px);
 }
-.tracker .tracker-form-submitButton:disabled {
+.submitButton:disabled {
     transform: translateY(0px);
     box-shadow: none;
     background: var(--light-color2);
 }
-.tracker .tracker-form-container h3:has(+ .tracker-form-opened) {
+.container h3:has(+ .tracker-form-opened) {
     background: var(--light-color);
 }
-.tracker .tracker-form-select {
+.select {
     padding: var(--tracker-s-space);
     min-width: 5em;
     border: none;
     border-radius: var(--tracker-br-small);
     background: var(--light-color2);
 }
-.tracker .tracker-form-select:focus {
+.select:focus {
     background: var(--light-color);
 }
-.tracker .tracker-form-select.tracker-form-input-hasText {
+.select.inputHasText {
     background: var(--light-color);
 }
-.tracker-form-h-container {
+.hContainer {
     display: flex;
     flex-direction: row;
     gap: var(--tracker-l-space);

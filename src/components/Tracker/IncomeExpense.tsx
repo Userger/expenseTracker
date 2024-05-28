@@ -1,4 +1,5 @@
 import { CurrencyElement } from "./CurrencyElement"
+import classes from "./styles/incomeExpense.module.css"
 
 export function IncomeExpense({
     expenseSum,
@@ -12,13 +13,13 @@ export function IncomeExpense({
     return (
         <div className="tracker-out-box">
             <h2 className="tracker-title">income/expense:</h2>
-            <div className="tracker-box tracker-incExp-container">
-                <div className="tracker-incExp-income">
+            <div className={`tracker-box ${classes.container}`}>
+                <div className={`${classes.income}`}>
                     {formattedIncomeSum}
                     <CurrencyElement />
                 </div>
                 /
-                <div className="tracker-incExp-expense">
+                <div className={`${classes.expense}`}>
                     {formattedExpenseSum}
                     <CurrencyElement />
                 </div>

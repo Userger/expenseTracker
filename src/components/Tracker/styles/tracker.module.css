@@ -1,52 +1,3 @@
-@import url("./history.css");
-@import url("./form.css");
-@import url("./incomeExpense.css");
-@import url("./currency.css");
-@import url("./settings.css");
-@import url("./balance.css");
-
-:root {
-    --title-fs: 16px;
-    --title-color: #707070;
-    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    --prime-color: #1c1c1c;
-    --border-color: #949494;
-    --form-color: #c5dde3;
-    --light-color: #bbb;
-    --light-color2: #ddd;
-    --red-color: #ff8f8f;
-    --green-color: #508d69;
-    --light-green-color: #9ade7b;
-    --tracker-s-space: 4px;
-    --tracker-m-space: 8px;
-    --tracker-l-space: 16px;
-    --tracker-br: 16px;
-    --tracker-br-small: 6px;
-}
-
-h1,
-h2,
-h3,
-h4,
-input,
-select,
-button {
-    font-size: inherit;
-}
-
-.tracker input:focus-within,
-.tracker .tracker-container select:focus {
-    background-color: var(--form-color);
-}
-.tracker * {
-    margin: 0;
-    padding: 0;
-    border: none;
-    font-size: inherit;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
 .tracker {
     position: relative;
     height: 600px;
@@ -59,7 +10,7 @@ button {
     box-shadow: 0 0 8px 1px var(--border-color);
     background: #f7f7f7;
 }
-.tracker .tracker-container {
+.container {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -68,46 +19,36 @@ button {
     overflow: hidden;
 }
 
-.tracker-h-container {
+.hContainer {
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
     gap: var(--tracker-l-space);
 }
-
-.tracker-button {
-    border-radius: var(--tracker-s-space);
-    padding: var(--tracker-s-space);
-    cursor: pointer;
-}
-.tracker .tracker-title {
-    font-size: var(--title-fs);
-    color: var(--title-color);
-}
-.tracker .tracker-main-title {
+.mainTitle {
     font-size: 1.5em;
     background: var(--light-color2);
     padding-block: var(--tracker-m-space);
     padding-inline: var(--tracker-l-space);
 }
-.tracker .tracker-box {
+.box {
     padding: var(--tracker-m-space);
     border: 2px solid var(--light-color2);
     border-radius: var(--tracker-br-small);
 }
-.tracker .tracker-out-box {
+.outBox {
     display: flex;
     flex-direction: column;
     gap: var(--tracker-s-space);
 }
-.tracker .tracker-emptyList {
+.emptyList {
     color: var(--light-color);
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.tracker .tracker-emptyList .tracker-arrow {
+.arrow {
     font-size: 3em;
     background: linear-gradient(90deg, transparent, #00ffbd, #006bff);
     background-clip: text;

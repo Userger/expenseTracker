@@ -1,4 +1,5 @@
-import { ReactNode, memo } from 'react'
+import { ReactNode, memo } from "react"
+import classes from "./styles/history.module.css"
 
 export const History = memo(function History({
     history,
@@ -6,9 +7,9 @@ export const History = memo(function History({
     history: ReactNode
 }) {
     return (
-        <div className="tracker-out-box tracker-history">
-            <h3 className="tracker-title">History:</h3>
-            <ul className="tracker-box tracker-historyList">{history}</ul>
+        <div className={`tracker-out-box ${classes.history}`}>
+            <h3 className={`tracker-title ${classes.title}`}>History:</h3>
+            <ul className={`tracker-box ${classes.historyList}`}>{history}</ul>
         </div>
     )
 })
