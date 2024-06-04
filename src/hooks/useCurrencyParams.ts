@@ -1,24 +1,21 @@
-import { useSearchParams } from "react-router-dom"
 import { currencies } from "../constants/currencies"
 import { useEffect } from "react"
+import { useBetterParams } from "./useBetterParams"
 
 export function useCurrencyParams() {
-    const [search, setSearch] = useSearchParams()
+    const [params, setParams] = useBetterParams()
+    let currency = params.get("currency")
 
-    let currency = search.get("currency")
-    // if (!currencies.includes(currency ?? "")) {
-    //     currency = currencies[0]
-    // }
     useEffect(() => {
         if (!currencies.includes(currency ?? "")) {
-            setSearch({ currency: currencies[0] })
+            setParams({ currency: currencies[0] })
         }
-    }, [currency])
+    }, [params])
     const setCurrency = (value: string) => {
         if (!currencies.includes(value)) {
-            setSearch({ currency: currencies[0] })
+            setParams({ currency: currencies[0] })
         } else {
-            setSearch({ currency: value })
+            setParams({ currency: value })
         }
     }
     function nextCurrency() {

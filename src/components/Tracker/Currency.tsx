@@ -1,9 +1,7 @@
 import { currencies } from "../../constants/currencies"
-import { useCurrencyParams } from "../../hooks/useCurrencyParams"
 import classes from "./styles/currency.module.css"
 
-export function Currency() {
-    const { currency } = useCurrencyParams()
+export function Currency({ currency }: { currency: string | null }) {
     const _currency = currency ?? "$"
     return (
         <div className={classes.currency}>

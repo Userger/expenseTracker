@@ -1,0 +1,8 @@
+.nav {
+    padding: var(--tracker-s-space);
+}
+.ul {
+    display: flex;
+    list-style: none;
+    gap: var(--tracker-s-space);
+}

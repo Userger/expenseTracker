@@ -6,7 +6,6 @@ function App() {
     return (
         <>
             <BrowserRouter>
-                <Header />
                 <TrackerApp />
             </BrowserRouter>
         </>

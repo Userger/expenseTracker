@@ -13,6 +13,7 @@ import { CurrencyChoose } from "./CurrensyChoose"
 import { Settings } from "./Settings"
 import { EmptyList } from "./EmptyList"
 import { useTransaction } from "../../hooks/useTransaction"
+import { Navbar } from "./Navbar"
 
 export function TrackerApp() {
     const {
@@ -29,6 +30,7 @@ export function TrackerApp() {
 
     return (
         <TrackerAppLayout
+            Navbar={Navbar}
             settings={<Settings currencyChoose=<CurrencyChoose /> />}
             header={<Header />}
             balance={<Balance balance={balance} />}

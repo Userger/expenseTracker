@@ -1,6 +1,7 @@
-import { useCurrencyParams } from "../../hooks/useCurrencyParams"
+import { useSearchParams } from "react-router-dom"
 
 export function CurrencyElement() {
-    const { currency } = useCurrencyParams()
+    const [search] = useSearchParams()
+    let currency = search.get("currency")
     return <span>{currency}</span>
 }

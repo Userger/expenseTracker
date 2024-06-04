@@ -2,6 +2,7 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+    padding: var(--tracker-s-space);
 }
 .title {
     display: flex;
