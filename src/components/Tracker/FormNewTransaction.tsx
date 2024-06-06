@@ -1,6 +1,5 @@
 import { memo, useState } from "react"
 import { useTransTypeCategory } from "../../hooks/useTransTypeCategory"
-import { useOpenForm } from "../../store/formOpened"
 import { getDateString } from "../../hooks/useTransaction"
 import classes from "./styles/form.module.css"
 
@@ -15,7 +14,6 @@ export const FormNewTransaction = memo(function FormNewTransaction({
     ) => void
 }) {
     console.log("form")
-    const { formOpened, openCloseForm } = useOpenForm()
     const [sum, setSum] = useState("")
     const [descr, setDescr] = useState("")
     const {
@@ -46,15 +44,7 @@ export const FormNewTransaction = memo(function FormNewTransaction({
 
     return (
         <div className={`tracker-out-box ${classes.form}`}>
-            <h2
-                onClick={openCloseForm}
-                className={`tracker-title ${classes.title}`}
-            >
-                New transaction:
-            </h2>
-            <form
-                className={`${classes.container} ${formOpened ? classes.containerOpened : ""}`}
-            >
+            <form className={`${classes.container}`}>
                 <div className={classes.hContainer}>
                     <select
                         className={`${classes.select} ${sum ? classes.inputHasText : ""}`}
@@ -117,6 +107,7 @@ export const FormNewTransaction = memo(function FormNewTransaction({
                     />
                 </div>
                 <input
+                    className={`${classes.input} ${descr.trim() && sum ? classes.inputHasText : ""}`}
                     defaultValue={date}
                     type="date"
                     onChange={(e) => setDate(e.target.value)}

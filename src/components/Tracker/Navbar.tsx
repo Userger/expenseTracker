@@ -12,12 +12,13 @@ export function Navbar({
         <nav className={classes.nav}>
             <ul className={classes.ul}>
                 {tabs.map((t) => (
-                    <li
-                        className={`${classes.li} ${t === activeTab ? classes.active : ""}`}
-                        key={t}
-                        onClick={() => setActiveTab({ activeTab: t })}
-                    >
-                        {t}
+                    <li key={t}>
+                        <button
+                            className={`tracker-button ${classes.button} ${t === activeTab ? classes.active : ""}`}
+                            onClick={() => setActiveTab({ activeTab: t })}
+                        >
+                            {t}
+                        </button>
                     </li>
                 ))}
             </ul>

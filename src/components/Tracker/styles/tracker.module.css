@@ -2,50 +2,42 @@
     position: relative;
     height: 100%;
     width: 100%;
-    overflow: hidden;
-    max-width: 1440px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     font-size: 16px;
+    align-items: center;
+}
+.hContainer {
+    margin-top: 70px;
+    padding: var(--tracker-l-space);
+    height: 100%;
+    width: 100%;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    gap: var(--tracker-l-space);
+
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: 1fr;
+    }
 }
 .container {
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: var(--tracker-l-space);
-    min-height: 600px;
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1200px) {
     }
 }
-
-.hContainer {
-    height: 100%;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 60% 1fr;
-    gap: var(--tracker-l-space);
+.box {
     padding: var(--tracker-l-space);
-
-    @media screen and (max-width: 1440px) {
-        grid-template-columns: 1fr;
-    }
+    border-radius: var(--tracker-br-small);
+    background: white;
 }
 .content {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-}
-.mainTitle {
-    font-size: 1.5em;
-    background: var(--light-color2);
-    padding-block: var(--tracker-m-space);
-    padding-inline: var(--tracker-l-space);
-}
-.box {
-    padding: var(--tracker-m-space);
-    border: 2px solid var(--light-color2);
-    border-radius: var(--tracker-br-small);
+    gap: var(--tracker-m-space);
 }
 .outBox {
     display: flex;

@@ -7,8 +7,7 @@ export const History = memo(function History({
     history: ReactNode
 }) {
     return (
-        <div className={`tracker-out-box ${classes.history}`}>
-            <h3 className={`tracker-title ${classes.title}`}>History:</h3>
+        <div className={`${classes.history}`}>
             <ul className={`tracker-box ${classes.historyList}`}>{history}</ul>
         </div>
     )

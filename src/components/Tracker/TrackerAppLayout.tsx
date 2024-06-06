@@ -1,12 +1,12 @@
 import { ReactNode, useEffect, useMemo, useState } from "react"
 import classes from "./styles/tracker.module.css"
-import { useSearchParams } from "react-router-dom"
-import { decodeSearchParams } from "../../utils/decodeSearchParams"
+
 import { useBetterParams } from "../../hooks/useBetterParams"
+
+const TABS = ["History"]
 
 export function TrackerAppLayout({
     header,
-    balance,
     IncomeExpense,
     history,
     formTransaction,
@@ -14,7 +14,6 @@ export function TrackerAppLayout({
     Navbar,
 }: {
     header: ReactNode
-    balance: ReactNode
     IncomeExpense: ReactNode
     history: ReactNode
     formTransaction: ReactNode
@@ -25,45 +24,33 @@ export function TrackerAppLayout({
         setActiveTab: ({ activeTab }: { activeTab: string }) => void
     }>
 }) {
-    const [width, setWidth] = useState(window.innerWidth || 0)
-    const isSmallWidth = useMemo(() => width <= 1440, [width])
-    const tabs = useMemo(
-        () => (isSmallWidth ? ["History", "New transaction"] : ["History"]),
-        [isSmallWidth]
-    )
-    const [params, setParams] = useBetterParams()
-    const activeTab = params.get("activeTab")
-
-    useEffect(() => {
-        if (!tabs.includes(activeTab ?? "")) {
-            setParams({ activeTab: tabs[0] })
-        }
-    }, [tabs])
+    const [isSmallWidth, setIsSmallWidth] = useState(window.innerWidth < 1200)
     useEffect(() => {
         window.addEventListener("resize", () => {
-            setWidth(window.innerWidth || 0)
+            setIsSmallWidth(window.innerWidth < 1200)
         })
     }, [])
+    const [params, setParams] = useBetterParams()
+    const activeTab = params.get("activeTab") || "History"
     return (
         <div className={`${classes.tracker}`}>
             {settings}
             {header}
             <div className={`${classes.hContainer}`}>
                 <div className={`${classes.container}`}>
-                    {balance}
-                    <div className={`${classes.content}`}>
+                    {isSmallWidth ? (
                         <Navbar
-                            tabs={tabs}
-                            activeTab={activeTab ?? "History"}
+                            tabs={TABS}
+                            activeTab={activeTab}
                             setActiveTab={setParams}
                         />
-                        {activeTab === "History" ? history : null}
-                        {isSmallWidth && activeTab === "New transaction"
-                            ? formTransaction
-                            : null}
+                    ) : (
+                        ""
+                    )}
+                    <div className={`${classes.content} ${classes.box}`}>
+                        {history}
                     </div>
                 </div>
-                {isSmallWidth ? null : formTransaction}
             </div>
         </div>
     )

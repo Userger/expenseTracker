@@ -1,0 +1,87 @@
+import { ReactNode, useEffect, useMemo, useState } from "react"
+import classes from "./styles/tracker.module.css"
+import { useBetterParams } from "../../hooks/useBetterParams"
+
+export function TrackerAppLayout({
+    Header,
+    balance,
+    IncomeExpense,
+    history,
+    formTransaction,
+    settings,
+    Navbar,
+}: {
+    Header: React.FC<{ balance: ReactNode }>
+    balance: ReactNode
+    IncomeExpense: ReactNode
+    history: ReactNode
+    formTransaction: ReactNode
+    settings: ReactNode
+    Navbar: React.FC<{
+        tabs: string[]
+        activeTab: string
+        setActiveTab: ({ activeTab }: { activeTab: string }) => void
+    }>
+}) {
+    const [width, setWidth] = useState(window.innerWidth || 0)
+    const isSmallWidth = useMemo(() => width <= 1200, [width])
+    const tabs = useMemo(
+        () => (isSmallWidth ? ["History", "New transaction"] : ["History"]),
+        [isSmallWidth]
+    )
+    const [params, setParams] = useBetterParams()
+    const activeTab = params.get("activeTab")
+
+    useEffect(() => {
+        if (!tabs.includes(activeTab ?? "")) {
+            setParams({ activeTab: tabs[0] })
+        }
+    }, [tabs])
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            setWidth(window.innerWidth || 0)
+        })
+    }, [])
+    return (
+        <div className={`${classes.tracker}`}>
+            {settings}
+            {header}
+            <div className={`${classes.hContainer}`}>
+                <div className={`${classes.container}`}>
+                    <div className={`${classes.balance} ${classes.box}`}>
+                        {balance}
+                    </div>
+                    <div className={`${classes.content} ${classes.box}`}>
+                        <Navbar
+                            tabs={tabs}
+                            activeTab={activeTab ?? "History"}
+                            setActiveTab={setParams}
+                        />
+                        <div
+                            className={`${classes.contentContainer} ${activeTab === "History" ? classes.contentContainerActive : ""}`}
+                        >
+                            {history}
+                        </div>
+                        <div
+                            className={`${classes.contentContainer} ${activeTab === "New transaction" ? classes.contentContainerActive : ""}`}
+                        >
+                            {formTransaction}
+                        </div>
+                    </div>
+                </div>
+                {isSmallWidth ? null : (
+                    <div className={`${classes.sideContainer}`}>
+                        <div
+                            className={`${classes.sideFormContainer} ${classes.box}`}
+                        >
+                            <h2 className={`${classes.sideFormTitle}`}>
+                                Add new transaction...
+                            </h2>
+                            {formTransaction}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    )
+}

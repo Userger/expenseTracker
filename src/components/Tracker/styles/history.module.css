@@ -1,12 +1,6 @@
 .history {
     height: 100%;
-    overflow: hidden;
     position: relative;
-    padding: var(--tracker-s-space);
-}
-.title {
-    display: flex;
-    justify-content: space-between;
 }
 .tracker .tracker-history-filter {
     display: flex;
@@ -14,7 +8,6 @@
 }
 .historyList {
     height: 100%;
-    overflow: auto;
     display: flex;
     flex-direction: column;
     gap: var(--tracker-s-space);
@@ -23,6 +16,7 @@
 /*date history list*/
 .dateHistoryList {
     max-height: 0em;
+    overflow: hidden;
 }
 .dateHistoryList.dateHistoryListOpened {
     max-height: initial;

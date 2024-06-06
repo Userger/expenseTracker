@@ -9,7 +9,6 @@
 }
 .tracker-box {
     padding: var(--tracker-m-space);
-    border: 2px solid var(--light-color2);
     border-radius: var(--tracker-br-small);
 }
 .tracker-out-box {

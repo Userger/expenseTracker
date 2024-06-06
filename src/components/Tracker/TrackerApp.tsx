@@ -32,8 +32,7 @@ export function TrackerApp() {
         <TrackerAppLayout
             Navbar={Navbar}
             settings={<Settings currencyChoose=<CurrencyChoose /> />}
-            header={<Header />}
-            balance={<Balance balance={balance} />}
+            header={<Header balance={<Balance balance={balance} />} />}
             IncomeExpense={
                 <IncomeExpense incomeSum={income} expenseSum={expense} />
             }
