@@ -7,15 +7,15 @@ export function useCurrencyParams() {
     let currency = params.get("currency")
 
     useEffect(() => {
-        if (!currencies.includes(currency ?? "")) {
+        if (!currency || !currencies.includes(currency)) {
             setParams({ currency: currencies[0] })
         }
     }, [params])
     const setCurrency = (value: string) => {
-        if (!currencies.includes(value)) {
-            setParams({ currency: currencies[0] })
-        } else {
+        if (currencies.includes(value)) {
             setParams({ currency: value })
+        } else {
+            setParams({ currency: currencies[0] })
         }
     }
     function nextCurrency() {

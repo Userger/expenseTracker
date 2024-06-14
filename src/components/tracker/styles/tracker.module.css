@@ -14,25 +14,27 @@
     height: 100%;
     width: 100%;
     max-width: 1600px;
-    display: grid;
-    grid-template-columns: 50% 1fr;
-    gap: var(--tracker-l-space);
-
-    @media screen and (max-width: 1200px) {
-        grid-template-columns: 1fr;
-    }
 }
 .container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 40% 1fr;
     gap: var(--tracker-l-space);
+    width: 100%;
+    overflow: hidden;
     @media screen and (max-width: 1200px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
     }
 }
 .box {
-    padding: var(--tracker-l-space);
+    overflow: hidden;
+    display: none;
     border-radius: var(--tracker-br-small);
     background: white;
+}
+.activeBox {
+    display: flex;
+    flex-direction: column;
 }
 .content {
     display: flex;

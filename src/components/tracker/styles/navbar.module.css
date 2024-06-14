@@ -1,0 +1,20 @@
+.nav {
+    padding: var(--tracker-s-space);
+    margin-bottom: var(--tracker-s-space);
+}
+.ul {
+    display: flex;
+    list-style: none;
+    gap: var(--tracker-s-space);
+}
+.button {
+    border-radius: var(--tracker-br);
+    padding-inline: var(--tracker-m-space);
+    transition:
+        color 100ms linear,
+        background 100ms linear;
+}
+.button.active {
+    background: var(--accent-color);
+    color: white;
+}

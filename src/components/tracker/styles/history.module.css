@@ -7,20 +7,24 @@
     gap: var(--tracker-s-space);
 }
 .historyList {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: var(--tracker-s-space);
+    gap: calc(var(--tracker-s-space) * 1.5);
 }
 
 /*date history list*/
 .dateHistoryList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 10fr;
+    width: 100%;
     max-height: 0em;
     overflow: hidden;
 }
+
 .dateHistoryList.dateHistoryListOpened {
     max-height: initial;
     padding: var(--tracker-s-space);
+    padding-inline-start: var(--tracker-l-space);
 }
 .dateTitle {
     display: flex;
@@ -53,43 +57,53 @@
 
 /* history item */
 .historyItem {
-    display: flex;
-    flex-direction: column;
-    gap: var(--tracker-s-space);
-    border-bottom: 1px solid var(--light-color2);
-}
-.historyItemHContainer {
-    width: 100%;
-    display: flex;
-    gap: var(--tracker-s-space);
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
+
+    list-style: disc;
+    display: grid;
+    grid-column: 1/4;
+    grid-template-columns: subgrid;
+    gap: var(--tracker-m-space);
+    transition: all 200ms linear;
     cursor: pointer;
 }
-.historyItemContainer {
-    display: flex;
-    justify-content: start;
-    gap: var(--tracker-l-space);
-    width: 100%;
+
+/*MARKER*/
+.historyItem:hover::before {
+    background: var(--accent-color);
+}
+.historyItem::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 100%;
+    transition: background 100ms linear;
 }
 
 .descr {
+    max-height: 2em;
     font-size: 0.9em;
-    max-height: 0px;
-    word-break: break-all;
-    padding: 0;
-    background: var(--light-color2);
+
+    padding-inline: var(--tracker-m-space);
+
+    white-space: nowrap;
     overflow: hidden;
-    box-shadow: inset 0px 0px 18px 1px gray;
+    text-overflow: ellipsis;
+    transition: all 400ms linear;
 }
-.historyItemOpened .descr {
-    max-height: initial;
-    padding: var(--tracker-s-space);
+.descr.open {
+    max-height: 20em;
+    white-space: wrap;
+    overflow: auto;
 }
+
 .num {
-    min-width: 100px;
-    text-align: start;
-    padding-inline-start: var(--tracker-s-space);
+    text-align: center;
 }
 .exp {
     color: var(--red-color);
@@ -97,19 +111,9 @@
 .inc {
     color: var(--green-color);
 }
-.deleteButton {
-    overflow: hidden;
-    transition: 200ms linear;
-    max-width: 0;
-    padding: 0 !important;
-    padding-inline: var(--tracker-s-space);
-    flex-shrink: 0;
-}
 .category {
-    justify-self: center;
-}
-
-.deleteButtonShow {
-    max-width: 5em;
-    padding-inline: var(--tracker-s-space) !important;
+    justify-self: start;
+    border: 1px solid var(--accent-color);
+    border-radius: var(--tracker-l-space);
+    padding-inline: var(--tracker-m-space);
 }

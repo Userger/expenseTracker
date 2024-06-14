@@ -1,0 +1,133 @@
+.form {
+    transition: all 200ms linear;
+    width: 100%;
+    max-width: 600px;
+}
+.container {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: var(--tracker-m-space);
+    transition: 300ms linear;
+    padding: var(--tracker-l-space);
+}
+
+.input {
+    font-size: 0.8em;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-block: calc(var(--tracker-s-space) * 3.5);
+    padding-inline: calc(var(--tracker-s-space) * 2);
+}
+
+.submitButton {
+    align-self: center;
+    width: 100%;
+    max-width: 200px;
+    margin-top: var(--tracker-m-space);
+    padding: var(--tracker-m-space);
+    border: 2px solid var(--light-color2);
+    border-radius: var(--tracker-br-small);
+    color: white;
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 2px 8px 1px var(--border-color);
+    transition: all 100ms ease-in;
+}
+.submitButton:enabled {
+    border: 2px solid var(--accent-color);
+}
+.submitButton:hover:enabled {
+    filter: brightness(1.1);
+    cursor: pointer;
+    color: var(--accent-color);
+    background: white;
+}
+.submitButton:active:enabled {
+    box-shadow: 0 0px 0 var(--border-color);
+    transform: translateY(0px);
+}
+.submitButton:disabled {
+    transform: translateY(0px);
+    box-shadow: none;
+    background: var(--light-color2);
+}
+.container h3:has(+ .tracker-form-opened) {
+    background: var(--light-color);
+}
+.hContainer {
+    font-size: 0.9em;
+    position: relative;
+    border: 2px solid var(--light-color2);
+    border-radius: var(--tracker-br-small);
+    display: flex;
+    flex-direction: row;
+    gap: var(--tracker-l-space);
+}
+.hContainer.active,
+.hContainer:has(.input:focus),
+.hContainer:has(.opened) {
+    border: 2px solid var(--accent-color);
+}
+
+/*placeholder*/
+.placeholder {
+    position: absolute;
+    z-index: 1;
+    top: calc(var(--tracker-s-space) * 2.5);
+    left: calc(var(--tracker-s-space) * 2.5);
+
+    padding-inline: 2px;
+
+    color: var(--light-color);
+    background: white;
+
+    transition:
+        color 200ms linear,
+        transform 200ms linear;
+    pointer-events: none;
+}
+
+.hContainer.active .placeholder {
+    transform: translateY(-120%) translateX(-15%) scale(0.8);
+    color: var(--accent-color);
+}
+.hContainer:has(.input:focus) .placeholder {
+    transform: translateY(-120%) translateX(-15%) scale(0.8);
+    color: var(--accent-color);
+}
+
+.select {
+    position: absolute;
+    z-index: 100000;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--light-color2);
+    transition: max-height 300ms linear;
+}
+
+.select div {
+    padding-block: calc(var(--tracker-s-space) * 3.5);
+    padding-inline: calc(var(--tracker-s-space) * 2);
+}
+.selectButton:focus + .select {
+    max-height: 20em;
+}
+.selectButton {
+    display: flex;
+    align-items: center;
+    padding-inline: var(--tracker-m-space);
+    color: var(--light-color);
+    background: transparent;
+    transition: background 200ms linear;
+    cursor: pointer;
+}
+.selectButton:hover {
+    background: var(--light-color2);
+}

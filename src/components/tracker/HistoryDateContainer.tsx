@@ -4,15 +4,18 @@ import { CurrencyElement } from "./CurrencyElement"
 import classes from "./styles/history.module.css"
 
 export function HistoryDateContainer({
-    dateHistory,
     Item,
+    dateHistory,
     deleteTransaction,
 }: {
-    dateHistory: TransactionType[]
     Item: React.FC<{
-        transaction: TransactionType
+        id: number
+        category: string
+        num: number
+        descr: string
         deleteTransaction: (id: number) => void
     }>
+    dateHistory: TransactionType[]
     deleteTransaction: (id: number) => void
 }) {
     const [opened, setOpened] = useState(true)
@@ -43,9 +46,12 @@ export function HistoryDateContainer({
             >
                 {dateHistory.map((transaction) => (
                     <Item
+                        id={transaction.id}
+                        category={transaction.category}
+                        num={transaction.num}
+                        descr={transaction.descr}
                         deleteTransaction={deleteTransaction}
                         key={transaction.id}
-                        transaction={transaction}
                     />
                 ))}
             </ul>

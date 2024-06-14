@@ -4,14 +4,13 @@ import { Header } from "./Header"
 import { History } from "./HistoryList"
 import { HistoryItem } from "./HistoryItem"
 import { IncomeExpense } from "./IncomeExpense"
-import { TrackerAppLayout } from "./TrackerAppLayout"
+import { TrackerAppLayout } from "./TrackerLayout"
 import "./styles/tracker.css"
 import { HistoryDateContainer } from "./HistoryDateContainer"
-import { getAnotherView } from "../../model/historyAnotherView"
+import { getAnotherView } from "../../utils/historyAnotherView"
 import { useMemo } from "react"
 import { CurrencyChoose } from "./CurrensyChoose"
 import { Settings } from "./Settings"
-import { EmptyList } from "./EmptyList"
 import { useTransaction } from "../../hooks/useTransaction"
 import { Navbar } from "./Navbar"
 
@@ -49,7 +48,7 @@ export function TrackerApp() {
                                 />
                             ))
                         ) : (
-                            <EmptyList />
+                            <div>empty list...</div>
                         )
                     }
                 />

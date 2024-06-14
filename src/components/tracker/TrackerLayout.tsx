@@ -3,7 +3,7 @@ import classes from "./styles/tracker.module.css"
 
 import { useBetterParams } from "../../hooks/useBetterParams"
 
-const TABS = ["History"]
+const TABS = ["History", "New transaction"]
 
 export function TrackerAppLayout({
     header,
@@ -27,7 +27,7 @@ export function TrackerAppLayout({
     const [isSmallWidth, setIsSmallWidth] = useState(window.innerWidth < 1200)
     useEffect(() => {
         window.addEventListener("resize", () => {
-            setIsSmallWidth(window.innerWidth < 1200)
+            setIsSmallWidth(window.innerWidth <= 1200)
         })
     }, [])
     const [params, setParams] = useBetterParams()
@@ -37,18 +37,25 @@ export function TrackerAppLayout({
             {settings}
             {header}
             <div className={`${classes.hContainer}`}>
+                {isSmallWidth ? (
+                    <Navbar
+                        tabs={TABS}
+                        activeTab={activeTab}
+                        setActiveTab={setParams}
+                    />
+                ) : (
+                    ""
+                )}
                 <div className={`${classes.container}`}>
-                    {isSmallWidth ? (
-                        <Navbar
-                            tabs={TABS}
-                            activeTab={activeTab}
-                            setActiveTab={setParams}
-                        />
-                    ) : (
-                        ""
-                    )}
-                    <div className={`${classes.content} ${classes.box}`}>
+                    <div
+                        className={`${classes.box} ${activeTab === "History" || !isSmallWidth ? classes.activeBox : ""}`}
+                    >
                         {history}
+                    </div>
+                    <div
+                        className={`${classes.box} ${activeTab === "New transaction" || !isSmallWidth ? classes.activeBox : ""}`}
+                    >
+                        {formTransaction}
                     </div>
                 </div>
             </div>
