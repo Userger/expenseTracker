@@ -1,0 +1,25 @@
+.ul li {
+    position: relative;
+    cursor: pointer;
+}
+.before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-150%) translateY(50%);
+    height: 50%;
+    aspect-ratio: 1;
+}
+.ul li:hover ~ li {
+    color: var(--light-color2);
+}
+.ul li:has(~ li:hover) {
+    color: var(--light-color2);
+}
+.ul li:hover ~ li .before {
+    background: var(--light-color2) !important;
+}
+.ul li:has(~ li:hover) .before {
+    background: var(--light-color2) !important;
+}

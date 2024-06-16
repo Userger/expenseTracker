@@ -25,8 +25,8 @@
     background: white;
 
     transition:
-        color 200ms linear,
-        transform 200ms linear;
+        color 100ms linear,
+        transform 100ms ease-in-out;
     pointer-events: none;
 }
 

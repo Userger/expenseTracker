@@ -1,6 +1,7 @@
 .history {
     height: 100%;
     position: relative;
+    border: 1px solid red;
 }
 .tracker .tracker-history-filter {
     display: flex;
@@ -61,6 +62,7 @@
 
     list-style: disc;
     display: grid;
+    align-items: center;
     grid-column: 1/4;
     grid-template-columns: subgrid;
     gap: var(--tracker-m-space);

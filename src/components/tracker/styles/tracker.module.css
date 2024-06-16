@@ -16,14 +16,11 @@
     max-width: 1600px;
 }
 .container {
-    display: grid;
-    grid-template-columns: 40% 1fr;
+    display: flex;
     gap: var(--tracker-l-space);
     width: 100%;
     overflow: hidden;
     @media screen and (max-width: 1200px) {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
     }
 }
 .box {
@@ -31,6 +28,9 @@
     display: none;
     border-radius: var(--tracker-br-small);
     background: white;
+}
+.historyBox {
+    width: 350px;
 }
 .activeBox {
     display: flex;
@@ -80,4 +80,18 @@
     100% {
         color: transparent;
     }
+}
+.addButton {
+    margin-left: auto;
+    padding: var(--tracker-s-space);
+    padding-inline: var(--tracker-m-space);
+    border: 1px solid var(--accent-color);
+    border-radius: var(--tracker-br);
+}
+.navContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tracker-s-space);
+    align-items: center;
+    margin-bottom: var(--tracker-m-space);
 }

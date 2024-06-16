@@ -1,0 +1,13 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: color-mix(in srgb, var(--accent-color) 40%, transparent);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box {
+    background: var(--bg-color);
+    border-radius: var(--tracker-br);
+}

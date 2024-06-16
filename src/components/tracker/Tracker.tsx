@@ -13,6 +13,8 @@ import { CurrencyChoose } from "./CurrensyChoose"
 import { Settings } from "./Settings"
 import { useTransaction } from "../../hooks/useTransaction"
 import { Navbar } from "./Navbar"
+import { PieDiagramm } from "../ui/diagrams/pie"
+import { Histogramm } from "../ui/diagrams/histogramm"
 
 export function TrackerApp() {
     const {
@@ -53,6 +55,16 @@ export function TrackerApp() {
                     }
                 />
             }
+            pie={
+                <PieDiagramm
+                    colors={["green", "tomato"]}
+                    data={[
+                        { name: "income", value: income },
+                        { name: "expense", value: -expense },
+                    ]}
+                />
+            }
+            histogramm={<Histogramm history={history} />}
             formTransaction={
                 <FormNewTransaction addTransaction={addTransaction} />
             }

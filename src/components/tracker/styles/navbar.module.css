@@ -1,6 +1,4 @@
 .nav {
-    padding: var(--tracker-s-space);
-    margin-bottom: var(--tracker-s-space);
 }
 .ul {
     display: flex;
