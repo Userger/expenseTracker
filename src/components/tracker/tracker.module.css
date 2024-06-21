@@ -1,0 +1,116 @@
+.tracker {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    align-items: center;
+}
+.hContainer {
+    padding: var(--tracker-l-space);
+    width: 100%;
+    max-width: 1600px;
+    border: 1px solid red;
+}
+.container {
+    display: grid;
+    grid-template-columns: 576px 1fr;
+    align-items: start;
+    gap: var(--tracker-l-space);
+    width: 100%;
+    overflow: hidden;
+    @media (max-width: 1600px) {
+        grid-template-columns: 1fr 576px;
+    }
+    @media (max-width: 1200px) {
+        grid-template-columns: 1fr;
+    }
+}
+.rightBox {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tracker-m-space);
+}
+.hiddenBox {
+    display: none;
+}
+.historyBox {
+    border: 1px solid var(--accent-color);
+}
+.lbox {
+    padding: var(--tracker-s-space);
+    border: 1px solid var(--accent-color);
+    overflow: hidden;
+}
+.metricsBox {
+    min-height: 754px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: var(--tracker-l-space);
+}
+.metricsBox .lbox {
+    height: 100%;
+}
+.cardBox {
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tracker-m-space);
+}
+.outBox {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tracker-s-space);
+}
+.emptyList {
+    color: var(--light-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.arrow {
+    font-size: 3em;
+    background: linear-gradient(90deg, transparent, #00ffbd, #006bff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 1000ms linear infinite;
+    background-size: 400% 100%;
+}
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+@keyframes blinking {
+    0% {
+        color: transparent;
+    }
+    100% {
+        color: transparent;
+    }
+}
+.addButton {
+    margin-left: auto;
+    padding: var(--tracker-s-space);
+    padding-inline: var(--tracker-m-space);
+    border: 1px solid var(--accent-color);
+    border-radius: var(--tracker-br);
+}
+.navContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tracker-s-space);
+    align-items: center;
+    margin-bottom: var(--tracker-m-space);
+}

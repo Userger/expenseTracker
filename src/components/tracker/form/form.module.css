@@ -1,0 +1,102 @@
+.container {
+    position: relative;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--tracker-m-space);
+
+    padding-top: var(--tracker-l-space);
+    background: inherit;
+}
+
+.input {
+    font-size: 0.8em;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-block: calc(var(--tracker-s-space) * 3.5);
+    padding-inline: calc(var(--tracker-s-space) * 2);
+}
+
+.submitButton {
+    align-self: center;
+    margin-top: auto;
+}
+.container h3:has(+ .tracker-form-opened) {
+    background: var(--light-color);
+}
+.hContainer {
+    font-size: 0.9em;
+    position: relative;
+    border: 2px solid var(--light-color2);
+    border-radius: var(--tracker-br-small);
+    display: flex;
+    flex-direction: row;
+    gap: var(--tracker-l-space);
+}
+.hContainer.active,
+.hContainer:has(.input:focus),
+.hContainer:has(.opened) {
+    border: 2px solid var(--prime-color);
+}
+
+/*placeholder*/
+.placeholder {
+    position: absolute;
+    z-index: 1;
+    top: calc(var(--tracker-s-space) * 2.5);
+    left: calc(var(--tracker-s-space) * 2.5);
+
+    padding-inline: 2px;
+
+    color: var(--light-color);
+    background: white;
+
+    transition:
+        color 200ms linear,
+        transform 200ms linear;
+    pointer-events: none;
+}
+
+.hContainer.active .placeholder {
+    transform: translateY(-120%) translateX(-15%) scale(0.8);
+    color: var(--accent-color);
+}
+.hContainer:has(.input:focus) .placeholder {
+    transform: translateY(-120%) translateX(-15%) scale(0.8);
+    color: var(--accent-color);
+}
+
+.select {
+    position: absolute;
+    z-index: 100000;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--light-color2);
+    transition: max-height 300ms linear;
+}
+
+.select div {
+    padding-block: calc(var(--tracker-s-space) * 3.5);
+    padding-inline: calc(var(--tracker-s-space) * 2);
+}
+.selectButton:focus + .select {
+    max-height: 20em;
+}
+.selectButton {
+    display: flex;
+    align-items: center;
+    padding-inline: var(--tracker-m-space);
+    color: var(--light-color);
+    background: transparent;
+    transition: background 200ms linear;
+    cursor: pointer;
+}
+.selectButton:hover {
+    background: var(--light-color2);
+}

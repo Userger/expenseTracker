@@ -1,0 +1,13 @@
+.link {
+    color: var(--prime-color);
+    padding-inline: var(--tracker-m-space);
+    padding-block: var(--tracker-s-space);
+    user-select: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.active {
+    border-radius: var(--tracker-br-small);
+    pointer-events: none;
+    background: var(--light-color3);
+}

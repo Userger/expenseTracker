@@ -9,7 +9,7 @@
     --light-color: #bbb;
     --light-color2: #ddd;
     --light-color3: #f0f0f0;
-    --accent-color: #6832a8;
+    --accent-color: #ffff5c;
     --red-color: #ff8f8f;
     --green-color: #508d69;
     --light-green-color: #9ade7b;
@@ -54,7 +54,6 @@ body {
     color: var(--prime-color);
 }
 #root {
-    height: 100%;
     @media screen and (max-width: 1440px) {
     }
 }
@@ -63,4 +62,27 @@ body {
     top: 0;
     left: 0;
     z-index: 1000000;
+}
+.container {
+    position: relative;
+
+    display: flex;
+    align-items: start;
+    padding-inline: var(--tracker-l-space);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1440px;
+}
+.sidebar {
+    flex-shrink: 0;
+    position: sticky;
+    top: 4em;
+    width: 18em;
+}
+
+.fullHeight {
+    height: 100%;
+}
+.lPadding {
+    padding: var(--tracker-l-space);
 }

@@ -1,0 +1,21 @@
+.button {
+    position: absolute;
+    z-index: 100000;
+    top: var(--tracker-m-space);
+    right: var(--tracker-m-space);
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 24px;
+    border-radius: var(--tracker-br-small);
+    background: transparent;
+
+    cursor: pointer;
+}
+.button:hover {
+    background: var(--light-color2);
+}

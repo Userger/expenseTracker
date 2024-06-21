@@ -19,15 +19,11 @@ export function PieDiagramm({
         colors
     )
     return (
-        <div ref={rootRef} style={{ padding: "var(--tracker-l-space)" }}>
+        <div ref={rootRef} className={classes.wrapper}>
             <div
+                className={classes.diagramm}
                 style={{
                     background: conic,
-                    borderRadius: "50%",
-                    height: "200px",
-                    width: "200px",
-                    marginBottom: "16px",
-                    boxShadow: "0 0 4px 1px var(--light-color)",
                 }}
             />
             <ul className={classes.ul}>

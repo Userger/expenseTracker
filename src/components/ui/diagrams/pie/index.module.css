@@ -1,3 +1,21 @@
+.wrapper {
+    padding: var(--tracker-l-space);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.diagramm {
+    border-radius: 50%;
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio: 1;
+    margin-bottom: 16px;
+    box-shadow: 0 0 4px 1px var(--light-color);
+}
+.ul {
+    padding-left: var(--tracker-l-space);
+}
 .ul li {
     position: relative;
     cursor: pointer;

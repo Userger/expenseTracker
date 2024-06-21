@@ -1,65 +1,49 @@
 import { ReactNode, useCallback, useEffect, useMemo, useState } from "react"
-import classes from "./styles/tracker.module.css"
+import classes from "./tracker.module.css"
+import "./tracker.css"
 
 import { useBetterParams } from "../../hooks/useBetterParams"
 import { Modal } from "../ui/modal"
+import clsx from "clsx"
+import { Navbar } from "./navbar/Navbar"
 
 const TABS = ["History", "Metrics"]
-const SMALL_WIDTH = 768
 
 export function TrackerAppLayout({
     header,
-    IncomeExpense,
     history,
     formTransaction,
+    card,
     settings,
     pie,
     histogramm,
-    Navbar,
 }: {
     header: ReactNode
-    IncomeExpense: ReactNode
     history: ReactNode
     formTransaction: ReactNode
+    card?: ReactNode
     settings: ReactNode
     pie: ReactNode
     histogramm: ReactNode
-    Navbar: React.FC<{
-        tabs: string[]
-        activeTab: string
-        setActiveTab: ({ activeTab }: { activeTab: string }) => void
-    }>
 }) {
-    const [isSmallWidth, setIsSmallWidth] = useState(
-        window.innerWidth < SMALL_WIDTH
-    )
-    useEffect(() => {
-        window.addEventListener("resize", () => {
-            setIsSmallWidth(window.innerWidth <= SMALL_WIDTH)
-        })
-    }, [])
     const [params, setParams] = useBetterParams()
     const activeTab = params.get("activeTab") || "History"
     const [formOpened, setFormOpened] = useState(false)
-    const closeForm = useCallback(() => {
-        setFormOpened(false)
-    }, [setFormOpened])
     return (
         <div className={`${classes.tracker}`}>
-            {settings}
             {header}
-            <Modal isOpen={formOpened} close={closeForm}>
+            <Modal isOpen={formOpened} close={() => setFormOpened(false)}>
                 {formTransaction}
             </Modal>
             <div className={`${classes.hContainer}`}>
                 <div className={classes.navContainer}>
-                    {isSmallWidth ? (
-                        <Navbar
-                            tabs={TABS}
-                            activeTab={activeTab}
-                            setActiveTab={setParams}
-                        />
-                    ) : null}
+                    <Navbar
+                        tabs={TABS}
+                        activeTab={activeTab}
+                        setActiveTab={(activeTab: string) => {
+                            setParams({ activeTab: activeTab })
+                        }}
+                    />
                     <button
                         onClick={() => setFormOpened(true)}
                         className={classes.addButton}
@@ -69,15 +53,34 @@ export function TrackerAppLayout({
                 </div>
                 <div className={`${classes.container}`}>
                     <div
-                        className={`${classes.box} ${classes.historyBox} ${activeTab === "History" || !isSmallWidth ? classes.activeBox : ""}`}
+                        className={
+                            activeTab === "History"
+                                ? `${classes.historyBox}`
+                                : classes.hiddenBox
+                        }
                     >
                         {history}
                     </div>
-                    <div
-                        className={`${classes.box} ${activeTab === "Metrics" || !isSmallWidth ? classes.activeBox : ""}`}
-                    >
-                        {pie}
-                        {histogramm}
+                    <div className={classes.rightBox}>
+                        <div
+                            className={
+                                activeTab === "Metrics"
+                                    ? `${classes.metricsBox}`
+                                    : classes.hiddenBox
+                            }
+                        >
+                            <div className={classes.lbox}>{pie}</div>
+                            <div className={classes.lbox}>{histogramm}</div>
+                        </div>
+                        <div
+                            className={clsx(
+                                card
+                                    ? clsx(classes.lbox, classes.cardBox)
+                                    : classes.hiddenBox
+                            )}
+                        >
+                            {card ? <>{card}</> : formTransaction}
+                        </div>
                     </div>
                 </div>
             </div>
